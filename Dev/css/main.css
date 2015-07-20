@@ -1,0 +1,524 @@
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+.full-background {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  background-color: #000;  
+  z-index: 1;
+}
+
+#withborder .full-background{
+    padding:10px 10px 0 10px; 
+  border: 10px solid #fff;
+}
+body{
+  color: #fff;
+}
+
+header h2{
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size:8em;
+}
+
+header h4{
+  font-weight: 200;
+  font-size:2em;
+}
+
+main h3{
+  font-size: 2.5em;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+
+/*SEARCH */
+
+/* label color */
+   .input-field label {
+     color: #CDDC39;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #CDDC39;     
+     font-size: 30px;
+     font-weight: 400;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     margin-top: 10px;
+     border-bottom: 2px solid #CDDC39;
+     box-shadow: 0 2px 0 0 #CDDC39;
+    font-size: 40px;
+    font-weight: 200;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #CDDC39;
+     box-shadow: 0 1px 0 0 #CDDC39;
+
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #CDDC39;
+     box-shadow: 0 1px 0 0 #CDDC39;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #CDDC39;
+   }
+
+.intro-text{
+  width:100%;
+}
+
+#intro h1{
+  font-size: 13vh;
+}
+
+.bottom{
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.material-icons{
+  font-size: 24px;
+}
+
+/*TITLE ACROSS ALL PAGES*/
+.title{
+  margin: 50px;
+  width: 25%;
+  height: 10em;
+  border: 3px solid;
+}
+
+.title i, h3{
+  margin-right: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.title i{
+  margin: 20px auto 5px;
+  font-size: 36px;
+}
+
+.title h3{
+  font-size: 1.5em;
+
+}
+
+.bar{
+  display: block;
+  height: 3px;
+
+  }  
+    
+#search .title{
+  background-color: #5c6bc0;
+}
+#artist .title{
+  background-color: #3949ab;
+  margin: 3em auto;
+} 
+
+#toptracks .title{
+  background-color: #303f9f;
+} 
+
+#albums .title{
+  background-color: #283593;
+} 
+
+#relatedartists .title{
+  background-color: #1a237e;
+}
+
+/*SEARCH PAGE*/
+
+
+/*ARTIST PAGE*/
+.bio-text{
+  display: block;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+#artist h2{
+  margin: 1.25em auto .5em;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size:5em;
+}
+
+#artist p{
+  font-weight: 200;
+  font-size:1.5em;
+  width:70%;
+  margin: 0 auto;
+}
+
+
+
+/*.bio-pic{
+  display: inline-block;
+  width: 40%;
+  margin: auto;
+}*/
+
+/*TRACK PAGES*/
+#toptracks img{
+  height:50px;
+  width:50px;
+}
+
+
+/*ALBUM AND RELATED ARTIST PAGES*/
+#withoutborder .full-background{
+  padding:0;
+  border:0;
+}
+.grid figure {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  /*margin: 10px 1%;*/
+  min-width: 320px;
+  max-width: 480px;
+  width: 33.3%;
+  height: 50%;
+  background: #3085a3;
+  text-align: center;
+  cursor: pointer;
+}
+
+.grid figure img {
+  position: relative;
+  display: block;
+  min-height: 100%;
+  max-width: 100%;
+  opacity: 0.7;
+}
+
+.grid figure figcaption {
+  padding: 2em;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+  pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption > a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+}
+
+.grid figure h2 {
+  font-size:2em;
+  word-spacing: -0.15em;
+  font-weight: 200;
+}
+
+.grid figure h2 span {
+  font-weight: 800;
+}
+
+.grid figure h2,
+.grid figure p {
+  margin: 0;
+}
+
+.grid figure p {
+  letter-spacing: 1px;
+  font-size: 68.5%;
+}
+
+.no-text{
+  position: relative;
+  float: left;
+  overflow: hidden;
+  min-width: 320px;
+  max-width: 480px;
+  width: 33.3%;
+  height: 50%;
+  cursor: pointer;
+}
+
+.no-text .title{
+  width: 75%;
+  height: 15em;
+  margin: 50px auto;
+}
+
+.no-text .title i{
+  margin: 60px auto 5px;
+}
+
+figure.effect-apollo {
+  background: #3F53B1;
+  margin: 0;
+}
+
+figure.effect-apollo img {
+  opacity: 0.95;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale3d(1.05,1.05,1);
+  transform: scale3d(1.05,1.05,1);
+}
+
+figure.effect-apollo figcaption::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  content: '';
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+  -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+  transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+}
+
+figure.effect-apollo p {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 3em;
+  padding: 0 1em;
+  max-width: 200px;
+  border-right: 4px solid #fff;
+  text-align: right;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+}
+
+figure.effect-apollo h2 {
+  text-align: left;
+}
+
+figure.effect-apollo:hover img {
+  opacity: 0.6;
+  -webkit-transform: scale3d(1,1,1);
+  transform: scale3d(1,1,1);
+}
+
+figure.effect-apollo:hover figcaption::before {
+  -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+  transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+}
+
+figure.effect-apollo:hover p {
+  opacity: 1;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers:
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
