@@ -107,6 +107,15 @@ main h3{
   font-size: 24px;
 }
 
+.ui-menu-item {
+  font-size: 16px;
+  padding-top: 15px;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
 /*TITLE ACROSS ALL PAGES*/
 .title{
   margin: 50px;
@@ -216,6 +225,7 @@ main h3{
 
 .viewMoreTracks {
   text-align: center;
+  display: none;
   position: absolute;
   bottom: -1%;
   left: 50%;

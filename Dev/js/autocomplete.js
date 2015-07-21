@@ -5,7 +5,7 @@ function suggestedArtists() {
                 url: "http://developer.echonest.com/api/v4/artist/suggest",
                 dataType: "jsonp",
                 data: {
-                    results: 5,
+                    results: 3,
                     api_key: "RKFREUONDORDOYUPI",
                     format:"jsonp",
                     name:request.term
@@ -21,6 +21,7 @@ function suggestedArtists() {
                 }
             });
         },
+        appendTo: '.input-field',
         minLength: 3,
         select: function( event, ui ) {
             $("#log").empty();
@@ -28,5 +29,4 @@ function suggestedArtists() {
         },
     });
 }
-
 suggestedArtists();
