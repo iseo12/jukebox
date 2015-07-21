@@ -27,14 +27,14 @@
     <h4>Powered by Spotify</h4>
     </div>
     <div class="bottom">
-      <a class="btn-floating btn-large waves-effect waves-light lime"><i class="material-icons">keyboard_arrow_down</i></a>
+      <a class="btn-floating btn-large waves-effect waves-light lime"><i class="material-icons" data-navigation-item="2">keyboard_arrow_down</i></a>
     </div>
   </div>
 </div>
 
-  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <div class="fixed-action-btn hidden" style="bottom: 45px; right: 47px;">
     <a class="btn-floating btn-large indigo">
-      <i class="large material-icons">arrow_drop_up</i>
+      <i class="large material-icons searchAgain" data-navigation-item="2">search</i>
     </a>
     <ul>
       <li><a class="btn-floating indigo lighten-1"><i class="material-icons">search</i></i></a></li>
@@ -76,13 +76,13 @@
 
 <div id="withborder">
 <!--1 SEARCH PAGE-->
-  <section  class="full-background valign-wrapper" id="search">
+  <section  class="full-background valign-wrapper content-2" id="search">
     <div class="section-text container">
       <form class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">search</i>
-            <input id="artist" type="text">
-            <label for="artist">Artist</label>
+            <input id="artistSearch" type="text" data-navigation-item="1">
+            <label for="artistSearch">Artist</label>
           </div>
       </form>
     </div>
@@ -90,18 +90,18 @@
 
 
 <!--2 ARTIST PAGE-->
-  <section id="artist" class="full-background">
+  <section id="artist" class=" hidden full-background content-1">
     <div class="section-header">
       <div class="bio-content">
         <div class="title">
-            <i class="material-icons">person_pin</i>
+            <img id="artistImage">
             <h3>Bio</h3> 
 <!--           <span class="bar"></span> -->
         </div>
       
           <div class="bio-text">
-            <h2>Ratatat</h2>
-            <p>Formerly known as Cherry, New York's rock-meets-electronica duo Ratatat feature multi-instrumentalist/programmer Evan Mast and guitarist Mike Stroud. Mast is also the brains behind the pretty laptop pop of E*vax, and with his brother E*Rock he runs the indie electronic label Audio Dregs. Stroud also plays, in the studio and on tour, with artists including Ben Kweller and Dashboard Confessional. Between these duties (and Mast's job as a graphic designer), the duo found time to work on their collaboration.</p>
+            <h2 id="artistName"></h2>
+            <p class="bio"></p>
          </div>
 
 <!--     <div class="bio-pic">
@@ -115,7 +115,7 @@
 
 
 <!--TOP TRACKS PAGE-->
-   <section id="toptracks" class="full-background">
+   <section id="top10tracks" class="full-background hidden">
     <div class="section-header">
       <div class="title">
         <i class="material-icons">library_music</i>
@@ -134,44 +134,15 @@
               <th data-field="play">Play</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td><img src="../Assets/classics.jpg"></td>
-              <td>Loud Pipes</td>
-              <td>3:46</td>
-              <td><a class="btn-floating btn-small waves-effect waves-light lime lighten-1"><i class="material-icons">play_arrow</i></a></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Classics</td>
-              <td>Loud Pipes</td>
-              <td>3:46</td>
-              <td><a class="btn-floating btn-small waves-effect waves-light lime lighten-1"><i class="material-icons">play_arrow</i></a></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Classics</td>
-              <td>Loud Pipes</td>
-              <td>3:46</td>
-              <td><a class="btn-floating btn-small waves-effect waves-light lime lighten-1"><i class="material-icons">play_arrow</i></a></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Classics</td>
-              <td>Loud Pipes</td>
-              <td>3:46</td>
-              <td><a class="btn-floating btn-small waves-effect waves-light lime lighten-1"><i class="material-icons">play_arrow</i></a></td>
-            </tr>
-          </tbody>
+          <tbody id="topTracks"></tbody>
         </table>
     </section>
    </div> 
 
-<div id="withoutborder">
+<div id="withoutborder" class="hidden">
 <!--ALBUMS PAGE-->
   <section id="albums" class="full-background">      
-         <div class="grid">
+         <!-- <div class="grid">
           <figure class="effect-apollo">
             <img src="../Assets/1.jpg" alt="album">
             <figcaption>
@@ -221,79 +192,34 @@
               <span class="play"><a href="#"><img src="#" alt="Play"></a></span>
             </figcaption>     
           </figure>
-        </div>
-               <div class="grid">
-          <div class="no-text section-header">
-             <div class="title">
-               <i class="material-icons">album</i>
-                <h3>Albums</h3>
+        </div> -->
+        <div class="no-text section-header">
+          <div class="title">
+            <i class="material-icons">album</i>
+            <h3>Albums</h3>
 <!--                <span class="bar"></span>  --> 
-            </div>
           </div>
         </div> 
     </section>
 
 
 <!--RELATED ARTISTS PAGE-->
-  <section id="relatedartists" class="full-background">
-        
-<div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Artist <span>Name</span></h2>
-              <p>Popularity</p>
-            </figcaption>     
-          </figure>
-        </div>
-        <div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Artist <span>Name</span></h2>
-              <p>Popularity</p>
-            </figcaption>     
-          </figure>
-        </div>
-         <div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Artist <span>Name</span></h2>
-              <p>Popularity</p>
-            </figcaption>     
-          </figure>
-        </div>
-        <div class="grid">
-          <div class="no-text section-header">
-          <div class="title">
-           <i class="material-icons">headset</i>
-              <h3>Related Artists</h3>
-<!--              <span class="bar"></span>  --> 
-          </div>
-          </div>
-        </div>   
-         <div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Artist <span>Name</span></h2>
-              <p>Popularity</p>
-            </figcaption>     
-          </figure>
-        </div>
-         <div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Artist <span>Name</span></h2>
-              <p>Popularity</p>
-            </figcaption>     
-          </figure>
-        </div>
-    </div>
-  </section>
+  <section id="relatedArtists" class="full-background clearfix">  
+    <div class="no-text section-header">
+      <div class="title">
+        <i class="material-icons">headset</i>
+        <h3>Related Artists</h3>
       </div>
+    </div>  
+    <!-- <figure class="effect-apollo">
+        <img src="../Assets/1.jpg" alt="album">
+        <figcaption>
+          <h2>Artist <span>Name</span></h2>
+          <p>Popularity</p>
+        </figcaption>     
+      </figure>
+    </div> -->
+  </section>
 
 
 
@@ -314,8 +240,16 @@
 
 
       <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+      <script src="js/jquery.tmpl.min.js"></script>
+      <script src="js/materialize.min.js"></script>
+      <script src="js/spotify-web-api.js"></script>
+      <script src="js/localstoragedb.min.js"></script>
+      <script src="js/spotifykeys.js"></script>
+      <script src="js/autocomplete.js"></script>
+      <script src="src/js/main.js"></script>
 
     </body>
   </html>

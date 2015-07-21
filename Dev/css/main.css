@@ -84,6 +84,10 @@ main h3{
      color: #CDDC39;
    }
 
+.hidden {
+  display: none;
+}
+
 .intro-text{
   width:100%;
 }
@@ -178,7 +182,9 @@ main h3{
   margin: 0 auto;
 }
 
-
+#albums {
+  overflow-y: hidden;
+}
 
 /*.bio-pic{
   display: inline-block;
@@ -187,9 +193,13 @@ main h3{
 }*/
 
 /*TRACK PAGES*/
-#toptracks img{
+#topTracks img{
   height:50px;
   width:50px;
+}
+
+#top10tracks {
+  overflow-y: scroll;
 }
 
 
@@ -198,7 +208,8 @@ main h3{
   padding:0;
   border:0;
 }
-.grid figure {
+
+figure {
   position: relative;
   float: left;
   overflow: hidden;
@@ -212,7 +223,7 @@ main h3{
   cursor: pointer;
 }
 
-.grid figure img {
+figure img {
   position: relative;
   display: block;
   min-height: 100%;
@@ -220,7 +231,7 @@ main h3{
   opacity: 0.7;
 }
 
-.grid figure figcaption {
+figure figcaption {
   padding: 2em;
   color: #fff;
   text-transform: uppercase;
@@ -229,13 +240,13 @@ main h3{
   backface-visibility: hidden;
 }
 
-.grid figure figcaption::before,
-.grid figure figcaption::after {
+figure figcaption::before,
+figure figcaption::after {
   pointer-events: none;
 }
 
-.grid figure figcaption,
-.grid figure figcaption > a {
+figure figcaption,
+figure figcaption > a {
   position: absolute;
   top: 0;
   left: 0;
@@ -245,7 +256,7 @@ main h3{
 
 /* Anchor will cover the whole item by default */
 /* For some effects it will show as a button */
-.grid figure figcaption > a {
+figure figcaption > a {
   z-index: 1000;
   text-indent: 200%;
   white-space: nowrap;
@@ -253,22 +264,22 @@ main h3{
   opacity: 0;
 }
 
-.grid figure h2 {
+figure h2 {
   font-size:2em;
   word-spacing: -0.15em;
   font-weight: 200;
 }
 
-.grid figure h2 span {
+figure h2 span {
   font-weight: 800;
 }
 
-.grid figure h2,
-.grid figure p {
+figure h2,
+figure p {
   margin: 0;
 }
 
-.grid figure p {
+figure p {
   letter-spacing: 1px;
   font-size: 68.5%;
 }
@@ -281,7 +292,6 @@ main h3{
   max-width: 480px;
   width: 33.3%;
   height: 50%;
-  cursor: pointer;
 }
 
 .no-text .title{
@@ -301,6 +311,7 @@ figure.effect-apollo {
 
 figure.effect-apollo img {
   opacity: 0.95;
+  width: 100%;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
   -webkit-transform: scale3d(1.05,1.05,1);
