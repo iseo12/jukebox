@@ -94,7 +94,8 @@
   $('body').on('click', '#topTracksMore', function(e) {
     e.preventDefault();
     $('.viewMoreTracks').css('display', 'none');
-    $('#top10tracks').css('overflow-y', 'scroll');
+    $('#top10tracks').css('overflow-y', 'visible');
+    $('#top10tracks').css('height', '194vh')
     $('.viewLessTracks').css('display', 'block');
   });
 
@@ -102,28 +103,19 @@
     e.preventDefault();
     $albums.css('overflow-y', 'scroll');
     $('.viewMoreAlbums').css('display', 'none');
-    $('.viewLessAlbums').css('display', 'block');
-  });
-
-  $('body').on('click', '#albumsLess', function(e) {
-    e.preventDefault();
-    $('.viewLessAlbums').css('display', 'none');
-    $albums.animate ({scrollTop: 0},'fast');
-    $albums.css('overflow-y', 'hidden');
-    $('.viewMoreAlbums').css('display', 'block');
   });
 
   $('body').on('click', '#topTracksLess', function(e) {
     e.preventDefault();
-    $('.viewLess').css('display', 'none');
-    $('#top10tracks').animate ({scrollTop: 0},'fast');
+    $('.viewLessTracks').css('display', 'none');
+    var targetContent = $(this).data('navigation-item');
+    var topPosition = $('.content-' + targetContent).offset().top;
+    $('body').animate ({
+      scrollTop: topPosition
+    });
     $('#top10tracks').css('overflow-y', 'hidden');
+    $('#top10tracks').css('height', '100vh');
     $('.viewMoreTracks').css('display', 'block');
-  });
-
-  $('body').on('scroll', '#top10tracks', function(e) {
-    e.preventDefault();
-    console.log($('.content-3').offset().top);
   });
 
   // $('body').on('click', '.artist', function(e) {
@@ -246,7 +238,6 @@
         }
       }
     }
-    albumsResult += '<div class="viewLessAlbums"><a href="#" id="albumsLess">'+"View Less"+'</a></div>';
     albumsResult += '<div class="viewMoreAlbums"><a href="#" id="albumsMore">'+"View More"+'</a></div>';
     $albums.html(albumsResult);
   }
