@@ -91,6 +91,41 @@
     });
   });
 
+  $('body').on('click', '#topTracksMore', function(e) {
+    e.preventDefault();
+    $('.viewMoreTracks').css('display', 'none');
+    $('#top10tracks').css('overflow-y', 'scroll');
+    $('.viewLessTracks').css('display', 'block');
+  });
+
+  $('body').on('click', '#albumsMore', function(e) {
+    e.preventDefault();
+    $albums.css('overflow-y', 'scroll');
+    $('.viewMoreAlbums').css('display', 'none');
+    $('.viewLessAlbums').css('display', 'block');
+  });
+
+  $('body').on('click', '#albumsLess', function(e) {
+    e.preventDefault();
+    $('.viewLessAlbums').css('display', 'none');
+    $albums.animate ({scrollTop: 0},'fast');
+    $albums.css('overflow-y', 'hidden');
+    $('.viewMoreAlbums').css('display', 'block');
+  });
+
+  $('body').on('click', '#topTracksLess', function(e) {
+    e.preventDefault();
+    $('.viewLess').css('display', 'none');
+    $('#top10tracks').animate ({scrollTop: 0},'fast');
+    $('#top10tracks').css('overflow-y', 'hidden');
+    $('.viewMoreTracks').css('display', 'block');
+  });
+
+  $('body').on('scroll', '#top10tracks', function(e) {
+    e.preventDefault();
+    console.log($('.content-3').offset().top);
+  });
+
   // $('body').on('click', '.artist', function(e) {
   //   e.preventDefault();
   //   selectedIndex = $(this).attr('data-selected-index');
@@ -185,10 +220,11 @@
       var albumCover = topTracks.tracks[i].album.images[2].url;
       var href = topTracks.tracks[i].href;
       var number = i+1;
+      var externalURL = topTracks.tracks[i].external_urls.spotify;
       console.log("minutes: " + minutes%60);
       console.log("seconds: " + seconds);
       // console.log('trackName: ' + trackName);
-      topTracksResult += '<tr><td>'+number+'</td><td><img src="'+albumCover+'"></td><td>'+trackName+'</td><td>'+time+'</td><td><a class="btn-floating btn-small waves-effect waves-light lime lighten-1"><i class="material-icons">play_arrow</i></a></td></tr>' 
+      topTracksResult += '<tr><td>'+number+'</td><td><img src="'+albumCover+'"></td><td>'+trackName+'</td><td>'+time+'</td><td><a class="playBtn btn-floating btn-small waves-effect waves-light lime lighten-1" href="'+externalURL+'" target="_blank"><i class="material-icons">play_arrow</i></a></td></tr>' 
       // console.log('topTracksResult: ' + topTracksResult);
     }
     $topTracks.html(topTracksResult);
@@ -203,12 +239,15 @@
         var albumName = response[i].name;
         var albumCover = response[i].images[1].url;
         var albumID = response[i].id;
-        console.log('albums: ' + response[i].name);
+        var externalURL = response[i].external_urls.spotify;
+        console.log('albums: ' + response);
         if (response[i].available_markets[j] === 'US') {
-          albumsResult += '<figure class="effect-apollo"><img src="'+albumCover+'"><figcaption><h2>'+albumName+'</h2></figcaption></figure>';
+          albumsResult += '<figure class="effect-apollo"><a href="'+externalURL+'" target="_blank"><img src="'+albumCover+'"><figcaption><h2>'+albumName+'</h2></figcaption></a></figure>';
         }
       }
     }
+    albumsResult += '<div class="viewLessAlbums"><a href="#" id="albumsLess">'+"View Less"+'</a></div>';
+    albumsResult += '<div class="viewMoreAlbums"><a href="#" id="albumsMore">'+"View More"+'</a></div>';
     $albums.html(albumsResult);
   }
 
