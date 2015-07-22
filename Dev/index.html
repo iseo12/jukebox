@@ -26,6 +26,10 @@
     <h2>Artist Jukebox</h2>
     <h4>Powered by Spotify</h4>
     </div>
+        <video autoplay loop poster="../Assets/classics.jpg" id="bgvid">
+<source src="../Assets/videoplayback.webm" type="video/webm">
+<source src="../Assets/videoplayback.mp4" type="video/mp4">
+</video>
     <div class="bottom">
       <a class="btn-floating btn-large waves-effect waves-light lime"><i class="material-icons" data-navigation-item="2">keyboard_arrow_down</i></a>
     </div>
@@ -92,17 +96,16 @@
 <!--2 ARTIST PAGE-->
   <section id="artist" class=" hidden full-background content-1">
     <div class="section-header">
-      <div class="bio-content">
         <div class="title">
             <img id="artistImage">
             <h3>Bio</h3> 
 <!--           <span class="bar"></span> -->
         </div>
       
-          <div class="bio-text">
+        <div class="bio-text">
             <h2 id="artistName"></h2>
-            <p class="bio"></p>
-         </div>
+            <p id="bio"></p>
+        </div>
 
 <!--     <div class="bio-pic">
           <div class="los1">
@@ -116,13 +119,12 @@
 
 <!--TOP TRACKS PAGE-->
    <section id="top10tracks" class="full-background hidden content-3">
-    <div class="section-header">
-      <div class="title">
+       <div class="section-header">
+         <div class="title">
         <i class="material-icons">library_music</i>
         <h3>Top Tracks</h3>
 <!--         <span class="bar"></span> -->
       </div>
-    </div>
       <div class="tabletrack">
         <table>
           <thead>
@@ -136,7 +138,8 @@
           </thead>
           <tbody id="topTracks"></tbody>
         </table>
-      </div>
+        </div>
+   </div> 
       <div class="viewMoreTracks">
         <a href="#" id="topTracksMore" data-navigation-item="3">View More</a>
       </div>
@@ -209,6 +212,9 @@
         </div>
     </section>
 
+ <div class="parallax-container">
+      <div class="parallax"><img src="../Assets/gr.jpg"></div>
+    </div>
 
 <!--RELATED ARTISTS PAGE-->
   <section id="relatedArtists" class="full-background clearfix">  
@@ -229,17 +235,6 @@
   </section>
 
 
-
-<!--CURATED PLAYLISTS-->
-
-  <section id="karenplaylist">
-  </section>
-  <section id="otherplaylists">
-  </section>
-
-  
-
-</main>
 
 
 

@@ -22,6 +22,21 @@
   z-index: 1;
 }
 
+video#bgvid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(../Assets/classics.jpg) no-repeat;
+  background-size: cover;
+}
+
 #withborder .full-background{
     padding:10px 10px 0 10px; 
   border: 10px solid #fff;
@@ -170,9 +185,22 @@ main h3{
 
 
 /*ARTIST PAGE*/
+#artist{
+  background-color:#fff;
+  color:#000;
+}
+
+#artist .title{
+  background:#fff;
+  border:0;
+}
+
+#artist img{
+  margin: 0 auto;
+  max-height:25vh;
+}
+
 .bio-text{
-  display: block;
-  width: 100%;
   margin: auto;
   text-align: center;
 }
@@ -181,7 +209,8 @@ main h3{
   margin: 1.25em auto .5em;
   text-transform: uppercase;
   font-weight: 800;
-  font-size:5em;
+  font-size:3em;
+  color: #1a237e;
 }
 
 #artist p{
@@ -193,14 +222,14 @@ main h3{
 
 #albums {
   overflow-y: hidden;
-  position: relative;
 }
 
-/*.bio-pic{
-  display: inline-block;
-  width: 40%;
+/*.bio-text{
+  display: block;
+  width: 100%;
   margin: auto;
-}*/
+  text-align: center;
+}
 
 /*TRACK PAGES*/
 #topTracks img{
@@ -424,6 +453,11 @@ figure.effect-apollo:hover p {
   opacity: 1;
   -webkit-transition-delay: 0.1s;
   transition-delay: 0.1s;
+}
+
+@media screen and (max-device-width: 800px) {
+body { background: url(classics.jpg) #000 no-repeat center center fixed; }
+#bgvid { display: none; }
 }
 
 /* ==========================================================================
