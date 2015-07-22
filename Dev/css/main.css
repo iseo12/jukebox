@@ -217,10 +217,8 @@ main h3{
   display: none;
   height: 50px;
   padding: 10px 0px;
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+  position: relative;
+  text-align:center;
 }
 
 .viewMoreTracks {
@@ -275,7 +273,7 @@ figure {
   min-width: 320px;
   max-width: 480px;
   width: 33.3%;
-  height: 50%;
+  height:322px;/* 50%;*/
   background: #3085a3;
   text-align: center;
   cursor: pointer;
@@ -350,7 +348,7 @@ figure p {
   min-width: 320px;
   max-width: 480px;
   width: 33.3%;
-  height: 50%;
+  height: 322px;
 }
 
 .no-text .title{

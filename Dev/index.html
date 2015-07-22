@@ -13,6 +13,7 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
      <link href="css/main.css" type="text/css" rel="stylesheet">
+     <link rel="stylesheet" href="css/animate.css"/>
       <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
@@ -36,13 +37,13 @@
     <a class="btn-floating btn-large indigo">
       <i class="large material-icons searchAgain" data-navigation-item="2">search</i>
     </a>
-    <ul>
+    <!-- <ul>
       <li><a class="btn-floating indigo lighten-1"><i class="material-icons">search</i></i></a></li>
       <li><a class="btn-floating indigo darken-1"><i class="material-icons">person_pin</i></a></li>
       <li><a class="btn-floating indigo darken-2"><i class="material-icons">library_music</i></a></li>
       <li><a class="btn-floating indigo darken-3"><i class="material-icons">album</i></a></li>
       <li><a class="btn-floating indigo darken-4"><i class="material-icons">headset</i></a></li>
-    </ul>
+    </ul> -->
   </div>
   </header>
   <!-- 
@@ -100,7 +101,7 @@
         </div>
       
           <div class="bio-text">
-            <h2 id="artistName"></h2>
+            <h2 id="artistName" class="wow fadeIn"></h2>
             <p class="bio"></p>
          </div>
 
@@ -116,7 +117,7 @@
 
 <!--TOP TRACKS PAGE-->
    <section id="top10tracks" class="full-background hidden content-3">
-    <div class="section-header">
+    <div class="section-header wow flipInX">
       <div class="title">
         <i class="material-icons">library_music</i>
         <h3>Top Tracks</h3>
@@ -148,7 +149,7 @@
 
 <div id="withoutborder" class="hidden">
 <!--ALBUMS PAGE-->
-  <section id="albums" class="full-background">      
+  <section id="albums" class="full-background clearfix">      
          <!-- <div class="grid">
           <figure class="effect-apollo">
             <img src="../Assets/1.jpg" alt="album">
@@ -212,7 +213,7 @@
 
 <!--RELATED ARTISTS PAGE-->
   <section id="relatedArtists" class="full-background clearfix">  
-    <div class="no-text section-header">
+    <div class="no-text section-header wow slideInDown">
       <div class="title">
         <i class="material-icons">headset</i>
         <h3>Related Artists</h3>
@@ -232,7 +233,8 @@
 
 <!--CURATED PLAYLISTS-->
 
-  <section id="karenplaylist">
+  <section id="tweets">
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </section>
   <section id="otherplaylists">
   </section>
@@ -253,10 +255,14 @@
       <script src="js/jquery.tmpl.min.js"></script>
       <script src="js/materialize.min.js"></script>
       <script src="js/spotify-web-api.js"></script>
+      <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
       <script src="js/localstoragedb.min.js"></script>
       <script src="js/spotifykeys.js"></script>
       <script src="js/autocomplete.js"></script>
       <script src="src/js/main.js"></script>
-
+      <script src="js/wow.min.js"></script>
+      <script>
+        new WOW().init();
+      </script>
     </body>
   </html>
