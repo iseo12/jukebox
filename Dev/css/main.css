@@ -219,6 +219,10 @@ main h3{
   margin: 0 auto;
 }
 
+#artistImage {
+  float: none;
+}
+
 .bio-text{
   margin: 0 auto;
   text-align: center;
@@ -342,6 +346,11 @@ main h3{
 
 }
 
+#relatedArtists {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 figure {
   position: relative;
   float: left;
@@ -425,7 +434,7 @@ figure p {
   min-width: 320px;
   max-width: 480px;
   width: 33.3%;
-  height: 322; /*50%*/
+  height: 322px; /*50%*/
 }
 
 .no-text .title{
@@ -569,7 +578,6 @@ body { background: url(classics.jpg) #000 no-repeat center center fixed; }
   opacity: 0.85;
   width: 100%;
   min-width: 0;
-  height:25%;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
   -webkit-transform: scale3d(1.05,1.05,1);

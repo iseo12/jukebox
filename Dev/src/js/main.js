@@ -229,9 +229,9 @@
       var trackTime = topTracks.tracks[i].duration_ms;
       var seconds = Math.round(trackTime/1000);
       var minutes = Math.floor(seconds/60);
-      var time = minutes%60 + ":" + seconds%60;
+      var time = minutes + ":" + seconds%60;
       if (time.length == 3) {
-        time += '0';
+        time = minutes + ':0' + seconds%60;
       }
       console.log("track time: " + trackTime);
       var albumCover = topTracks.tracks[i].album.images[2].url;
@@ -266,6 +266,7 @@
     var albumsResult = '';
     var response = albums.items;
     if (response[0].name != 'null') {
+      albumsResult += '<div class="no-text section-header"><div class="title"><i class="material-icons">'+"albums"+'</i><h3>'+"Albums"+'</h3></div></div>';
       albumsResult += '<figure class="effect-apollo"><a href="'+response[0].external_urls.spotify+'" target="_blank"><img src="'+response[0].images[0].url+'"><figcaption><h2>'+response[0].name+'</h2></figcaption></a></figure>'
     }
     for (var i = 0; i < response.length-1; i++) {
@@ -292,6 +293,7 @@
     console.log('relatedArtists: ', relatedArtists);
     console.log('passed to template2: ', relatedArtists.artists);
     var rArtistsResult = '';
+    rArtistsResult += '<div class="no-text section-header"><div class="title"><i class="material-icons">'+"headset"+'</i><h3>'+"Related Artists"+'</h3></div></div>';
     for (var i = 0; i < 5; i++) {
       // var artistPicture = rArtists;
       var artistName = relatedArtists.artists[i].name;
