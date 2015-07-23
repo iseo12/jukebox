@@ -5,7 +5,8 @@
   var selectedArtistData = '';
   var albumPopularity = ''; 
   var $ajaxlog = $('#ajaxlog');  
-  var $bioPlaceholder = $('#selectedArtistBio');
+  var $bio = $('#bio');
+  var $viewMoreBio = $('#viewMoreBio');
   var $artistImage = $("#artistImage");
   var $artistName = $("#artistName");
   // var $selectedArtistTemplate = $('#selectedartisttemplate');
@@ -35,7 +36,9 @@
   $(document).ajaxSuccess(function(event, request, settings) {
     $ajaxlog.append('<li>Successful Request!</li>');
   });  
-  
+
+
+
   $('.modal-trigger').leanModal();
   
   $('#artistSearch').keypress(function(e) {
@@ -53,7 +56,7 @@
         });
         $('.fixed-action-btn').removeClass('hidden');
         $('#top10tracks').removeClass('hidden');
-        $('#withoutborder').removeClass('hidden');      
+        $('#artistContent').removeClass('hidden');      
         searchArtists(query);
       }
     }
@@ -222,7 +225,7 @@
   function renderAlbums(albums) {
     var albumsResult = '';
     var response = albums.items;
-    albumsResult += '<div class="no-text section-header"><div class="title"><i class="material-icons">'+"album"+'</i><h3>'+"Albums"+'</h3></div></div>';
+    albumsResult += '<div class="no-text section-header"><div class="title"><h3>'+"Albums"+'</h3></div></div>';
     for (var i = 0; i < response.length; i++) {
       for (var j = 0; j < response[i].available_markets.length; j++) {
         var albumName = response[i].name;
@@ -243,18 +246,19 @@
   }
 
   function renderRelated(relatedArtists) {
-    console.log('relatedArtists: ', relatedArtists);
-    console.log('passed to template2: ', relatedArtists.artists);
+    // console.log('relatedArtists: ', relatedArtists);
+    // console.log('passed to template2: ', relatedArtists.artists);
     var rArtistsResult = '';
+     rArtistsResult += '<div class="no-text section-header"><div class="title"><h3>'+"Related Artists"+'</h3></div></div>';
     for (var i = 0; i < 5; i++) {
       // var artistPicture = rArtists;
       var artistName = relatedArtists.artists[i].name;
       var artistID = relatedArtists.artists[i].id;
       var artistImage = relatedArtists.artists[i].images[0].url;
       var artistPopularity = relatedArtists.artists[i].popularity;
-      if (i == 2) {
-        rArtistsResult += '<div class="no-text section-header"><div class="title"><i class="material-icons">'+"headset"+'</i><h3>'+"Related Artists"+ '</h3></div></div>';
-      }
+      // if (i == 2) {
+      //   rArtistsResult += '<div class="no-text section-header"><div class="title"><i class="material-icons">'+"headset"+'</i><h3>'+"Related Artists"+ '</h3></div></div>';
+      // }
       rArtistsResult += '<figure class="effect-apollo"><a class="artist" data-selected-index="'+i+'" data-navigation-item="1" data-artist-name="'+artistName+'" href="'+artistID+'"><img src="'+artistImage+'"><figcaption><h2>'+artistName+'</h2></figcaption></a></figure>';
       console.log("artistResult: " + rArtistsResult);
     }
@@ -263,9 +267,28 @@
 
   function renderArtistImage(artist) {
     console.log("artist image: " + artist);
-    $artistImage.attr('src', artist.images[2].url);
+    $artistImage.attr('src', artist.images[1].url);
     $artistName.html(artist.name);
   }
+
+  function getBiographies(query){
+  // console.log("biographies: "+selectedID);
+    $.ajax({
+      url:"http://developer.echonest.com/api/v4/artist/biographies?api_key=WFQW0DDRWPPLDK1JT&id=spotify:artist:"+selectedID,
+      success: function(data){
+      for (var i = 0; i < data.response.biographies.length; i++) {
+        var biotext = data.response.biographies[i].text;
+        if (biotext.length > 100) {
+          $bio.html(biotext); 
+          var biourl = '<a href="'+data.response.biographies[i].url+'" target="_blank" id="bioButton">More</a>';
+          $viewMoreBio.html(biourl);
+          break;
+        } 
+      }
+    }
+  });
+};
+
 
   function displayArtistData(index) {
     selectedArtistData = searchResultData.artists.items[index];
@@ -273,6 +296,7 @@
     console.log('passed to template1: ', selectedArtistData);
     getArtistImage(selectedID);
     getTopTracksByID(selectedID);
+    getBiographies(selectedID);
     getAlbums(selectedID);
     getRelatedByID(selectedID);
     // $searchResults.html('');

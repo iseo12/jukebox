@@ -19,7 +19,7 @@
       <header>
 
 <!--LANDING PAGE-->
-<div id="withborder">
+<!-- <div id="withborder"> -->
   <div class="full-background valign-wrapper" id="intro">
 
     <div class="intro-text center-align">
@@ -34,19 +34,21 @@
       <a class="btn-floating btn-large waves-effect waves-light lime"><i class="material-icons" data-navigation-item="2">keyboard_arrow_down</i></a>
     </div>
   </div>
-</div>
+<!-- </div> -->
+
+<!--NAV-->
 
   <div class="fixed-action-btn hidden" style="bottom: 45px; right: 47px;">
     <a class="btn-floating btn-large indigo">
       <i class="large material-icons searchAgain" data-navigation-item="2">search</i>
     </a>
-    <ul>
+ <!--    <ul>
       <li><a class="btn-floating indigo lighten-1"><i class="material-icons">search</i></i></a></li>
       <li><a class="btn-floating indigo darken-1"><i class="material-icons">person_pin</i></a></li>
       <li><a class="btn-floating indigo darken-2"><i class="material-icons">library_music</i></a></li>
       <li><a class="btn-floating indigo darken-3"><i class="material-icons">album</i></a></li>
       <li><a class="btn-floating indigo darken-4"><i class="material-icons">headset</i></a></li>
-    </ul>
+    </ul> -->
   </div>
   </header>
   <!-- 
@@ -78,12 +80,11 @@
 
 <main>
 
-<div id="withborder">
+<!-- <div id="withborder"> -->
 <!--1 SEARCH PAGE-->
-  <section  class="full-background valign-wrapper content-2" id="search">
+  <section  class="withborder full-background valign-wrapper content-2" id="search">
     <div class="section-text container">
-      <form class="row">
-          <div class="input-field col s12">
+          <div class="input-field">
             <i class="material-icons prefix">search</i>
             <input id="artistSearch" type="text" data-navigation-item="1">
             <label for="artistSearch">Artist</label>
@@ -94,23 +95,39 @@
 
 
 <!--2 ARTIST PAGE-->
-  <section id="artist" class=" hidden full-background content-1">
+<!--   <section id="artist" class="hidden">
     <div class="section-header">
         <div class="title">
-            <img id="artistImage">
+            <i class="material-icons">face</i>
             <h3>Bio</h3> 
-<!--           <span class="bar"></span> -->
         </div>
       
         <div class="bio-text">
+            <img id="artistImage">
             <h2 id="artistName"></h2>
             <p id="bio"></p>
         </div>
 
-<!--     <div class="bio-pic">
-          <div class="los1">
-          <img src="../Assets/1.jpg" alt="Artist Img" width="250" height="250">
-        </div> -->
+      </div>
+  </section> -->
+
+  <section id="artist" class="hidden content-1 container">
+     <div class="title row">
+        <h3 class="col s12">Bio</h3>  
+     </div>
+      
+      <div class="bio-header row center-align">
+            <img id="artistImage" class="col s12 m6 l6">
+            <h2 id="artistName" class="col s12"></h2>
+      </div>
+
+        <div class="bio-text col s8 m2 l2">
+           <p id="bio"></p>
+        </div>
+    
+    <div id="viewMoreBio"></div>
+
+
       </div>
     </div>
   </section>
@@ -118,12 +135,13 @@
 
 
 <!--TOP TRACKS PAGE-->
+
    <section id="top10tracks" class="full-background hidden content-3">
        <div class="section-header">
-         <div class="title">
-        <i class="material-icons">library_music</i>
-        <h3>Top Tracks</h3>
-<!--         <span class="bar"></span> -->
+          <div class="title"> 
+          <!--   <i class="material-icons">library_music</i> -->
+            <h3>Top Tracks</h3>
+        <span class="bar"></span> 
       </div>
       <div class="tabletrack">
         <table>
@@ -138,7 +156,7 @@
           </thead>
           <tbody id="topTracks"></tbody>
         </table>
-        </div>
+        
    </div> 
       <div class="viewMoreTracks">
         <a href="#" id="topTracksMore" data-navigation-item="3">View More</a>
@@ -149,78 +167,27 @@
     </section>
    </div> 
 
-<div id="withoutborder" class="hidden">
+<div id="artistContent" class="withborder hidden">
 <!--ALBUMS PAGE-->
-  <section id="albums" class="full-background">      
-         <!-- <div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Album <span>Name</span></h2>
-                    <a class="btn-floating btn-large waves-effect waves-light lime"><i class="material-icons">keyboard_arrow_down</i></a>
-              <p>Year Released</p>
-              <p># songs</p>
-            </figcaption>     
-          </figure>
-        </div>
-         <div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Album <span>Name</span></h2>
-              <p>Year Released</p>
-              <span class="play"><a href="#"><img src="#" alt="Play"></a></span>
-            </figcaption>     
-          </figure>
-        </div>
-        <div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Album <span>Name</span></h2>
-              <p>Year Released</p>
-              <span class="play"><a href="#"><img src="#" alt="Play"></a></span>
-            </figcaption>     
-          </figure>
-        </div>
-       <div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Album <span>Name</span></h2>
-              <p>Year Released</p>
-              <span class="play"><a href="#"><img src="#" alt="Play"></a></span>
-            </figcaption>     
-          </figure>
-        </div>
-         <div class="grid">
-          <figure class="effect-apollo">
-            <img src="../Assets/1.jpg" alt="album">
-            <figcaption>
-              <h2>Album <span>Name</span></h2>
-              <p>Year Released</p>
-              <span class="play"><a href="#"><img src="#" alt="Play"></a></span>
-            </figcaption>     
-          </figure>
-        </div> -->
-        <div class="no-text section-header">
+  <div id="albums" class="full-background clearfix">      
+      
+     <!--   <div class="no-text section-header">
           <div class="title">
             <i class="material-icons">album</i>
             <h3>Albums</h3>
-<!--                <span class="bar"></span>  --> 
           </div>
-        </div>
-    </section>
-
- <div class="parallax-container">
-      <div class="parallax"><img src="../Assets/gr.jpg"></div>
+        </div>-->
     </div>
+
+<!--  <div class="parallax-container">
+      <div id="parallax"><img src="../Assets/gr.jpg"></div>
+    </div> -->
 
 <!--RELATED ARTISTS PAGE-->
   <section id="relatedArtists" class="full-background clearfix">  
     <div class="no-text section-header">
       <div class="title">
-        <i class="material-icons">headset</i>
+<!--         <i class="material-icons">headset</i> -->
         <h3>Related Artists</h3>
       </div>
     </div>  
@@ -233,10 +200,6 @@
       </figure>
     </div> -->
   </section>
-
-
-
-
 
     <!--FOOTER CONTAINER-->
 
