@@ -219,8 +219,21 @@ main h3{
   margin: 0 auto;
 }
 
-#artistImage {
+#artistImgContainer {
+  display: inline-block;
   float: none;
+  width: 50%;
+  height: 400px;
+  overflow: hidden;
+}
+
+#artistImage {
+  height: 100%;
+}
+
+#twitter {
+  display: inline-block;
+  width: 49%;
 }
 
 .bio-text{
@@ -250,6 +263,7 @@ main h3{
   text-transform: uppercase;
   font-weight: 800;
   font-size:3em;
+  text-align: center;
   color: #1a237e;
 }
 
