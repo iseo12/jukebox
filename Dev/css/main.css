@@ -351,7 +351,7 @@ figure {
   min-width: 320px;
   max-width: 480px;
   width: 33.3%;
-  height: 50%;
+  height: 322px; /*50%;*/
   background: #3085a3;
   text-align: center;
   cursor: pointer;
@@ -426,7 +426,7 @@ figure p {
   min-width: 320px;
   max-width: 480px;
   width: 33.3%;
-  height: 50%;
+  height: 322; /*50%*/
 }
 
 .no-text .title{

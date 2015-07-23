@@ -5,6 +5,7 @@
   var selectedArtistData = '';
   var albumPopularity = ''; 
   var $ajaxlog = $('#ajaxlog');  
+  var $bioPlaceholder = $('#selectedArtistBio');
   var $bio = $('#bio');
   var $viewMoreBio = $('#viewMoreBio');
   var $artistImage = $("#artistImage");
@@ -36,9 +37,7 @@
   $(document).ajaxSuccess(function(event, request, settings) {
     $ajaxlog.append('<li>Successful Request!</li>');
   });  
-
-
-
+  
   $('.modal-trigger').leanModal();
   
   $('#artistSearch').keypress(function(e) {
@@ -48,6 +47,7 @@
       var query = $('#artistSearch').val();
       if (query.length > 2) {
         // $searchResults.html('');
+        searchArtists(query);
         $('#artist').removeClass('hidden');
         var targetContent = $(this).data('navigation-item');
         var topPosition = $('.content-' + targetContent).offset().top;
@@ -56,8 +56,7 @@
         });
         $('.fixed-action-btn').removeClass('hidden');
         $('#top10tracks').removeClass('hidden');
-        $('#artistContent').removeClass('hidden');      
-        searchArtists(query);
+        $('#withoutborder').removeClass('hidden');      
       }
     }
   }); 
@@ -83,13 +82,14 @@
     e.preventDefault();
     $('.viewMoreTracks').css('display', 'none');
     $('#top10tracks').css('overflow-y', 'visible');
-    $('#top10tracks').css('height', '194vh')
+    $('#top10tracks').css('height', '100%')
     $('.viewLessTracks').css('display', 'block');
   });
 
   $('body').on('click', '#albumsMore', function(e) {
     e.preventDefault();
-    $albums.css('overflow-y', 'scroll');
+    $albums.css('overflow-y', 'visible');
+    $albums.css('height', '100%');
     $('.viewMoreAlbums').css('display', 'none');
   });
 
@@ -107,15 +107,23 @@
   });
 
    $('body').on('click', '.artist', function(e) {
-    e.preventDefault();
-    var query = $(this).data('artist-name');
-    searchArtists(query);
-    var targetContent = $(this).data('navigation-item');
-    var topPosition = $('.content-' + targetContent).offset().top;
-    $('body').animate ({
-      scrollTop: topPosition
+      e.preventDefault();
+      var query = $(this).data('artist-name');
+      searchArtists(query);
+      $('.viewLessTracks').css('display', 'none');
+      $('.viewMoreTracks').css('display', 'block');
+      $('#top10tracks').css('height', '100vh');
+      $('#top10tracks').css('overflow-y', 'hidden');
+      $albums.css('height', '100vh');
+      $('.viewMoreAlbums').css('display', 'block');
+      var targetContent = $(this).data('navigation-item');
+      var topPosition = $('.content-' + targetContent).offset().top;
+      $('body').animate ({
+        scrollTop: topPosition
+      });
+      $('#artistSearch').val($(this).data('artist-name'));
+      console.log('related artist:' + $('#artistSearch').val());
     });
-  });
 
   // $('body').on('click', '.artist', function(e) {
   //    e.preventDefault();
@@ -158,6 +166,20 @@
     .pipe(renderArtistImage);
   }
 
+  function getTweets(artistID) {
+    var eID = 'spotify:artist:' + artistID;
+    var url = 'http://developer.echonest.com/api/v4/artist/twitter?api_key=RKFREUONDORDOYUPI&id='+eID+'&format=json'
+    console.log('tweetsID: ', eID);
+    $.ajax ({
+      url: url,
+      success: function(data) {
+        console.log('Tweets data: ', data);
+        return $.get(url)
+        .pipe(renderTweets);
+      }
+    });
+  }
+
   function trimResults(response) {
     if (response.artists.length > RELATED_LIMIT) {
       response.artists = response.artists.slice(0, RELATED_LIMIT);
@@ -175,8 +197,17 @@
       album_type: 'album'
     };
     var url = BASE_URL+'search';
-    return $.get(url, oData)
-      .pipe(renderSearchResults);
+    $.ajax ({
+      url: url,
+      data: oData,
+      success: function(data) {
+        return $.get(url, oData)
+        .pipe(renderSearchResults);
+      },
+      fail: function(){
+        alert("Please input valid artist");
+      } 
+    });
   }
 
   function renderSearchResults(response) {
@@ -222,44 +253,56 @@
     $topTracks.html(topTracksResult);
   }
 
+  function renderTweets(data) {
+    var tweetResults = '';
+    var twitterHandle = data.response.artist.twitter;
+    console.log('twitter handle: ', twitterHandle);
+    var twitterUrl = 'https://twitter.com/'+ twitterHandle;
+    tweetResults += '<a class="twitter-timeline" href="'+twitterUrl+'" data-widget-id="623924186801639424">'+"Tweets by @" +twitterHandle+'</a>';
+    $(tweetResults).prepend($('#tweets'));
+  }
+
   function renderAlbums(albums) {
     var albumsResult = '';
     var response = albums.items;
-    albumsResult += '<div class="no-text section-header"><div class="title"><h3>'+"Albums"+'</h3></div></div>';
-    for (var i = 0; i < response.length; i++) {
-      for (var j = 0; j < response[i].available_markets.length; j++) {
-        var albumName = response[i].name;
-        var albumCover = response[i].images[0].url;
-        var albumID = response[i].id;
-        var externalURL = response[i].external_urls.spotify;
-        var x = i-1;
-        console.log('albums: ' + response);
-        if (response[i].available_markets[j] === 'US' && response[i].type === 'album') {
-          albumsResult += '<figure class="effect-apollo"><a href="'+externalURL+'" target="_blank"><img src="'+albumCover+'"><figcaption><h2>'+albumName+'</h2></figcaption></a></figure>';
-        }
+    albumsResult += '<div class="no-text section-header wow flipInX"><div class="title"><i class="material-icons">'+"album"+'</i><h3>'+"Albums"+'</h3></div></div>';
+    if (response[0].name != 'null') {
+      albumsResult += '<figure class="effect-apollo"><a href="'+response[0].external_urls.spotify+'" target="_blank"><img src="'+response[0].images[0].url+'"><figcaption><h2>'+response[0].name+'</h2></figcaption></a></figure>'
+    }
+    for (var i = 0; i < response.length-1; i++) {
+      var albumNamePrev = response[i].name;
+      var albumNameCur = response[i+1].name;
+      console.log('albumNamePrev:', albumNamePrev);
+      console.log('albumNameCur:', albumNameCur);
+      var albumCover = response[i+1].images[0].url;
+      var albumID = response[i+1].id;
+      var externalURL = response[i+1].external_urls.spotify;
+      console.log('albums: ' + response);
+      if (albumNameCur != albumNamePrev && response[i].type === 'album') {
+        albumsResult += '<figure class="effect-apollo wow fadeIn"><a href="'+externalURL+'" target="_blank"><img src="'+albumCover+'"><figcaption><h2>'+albumNameCur+'</h2></figcaption></a></figure>';
       }
     }
     if (response.length > 5) {
       albumsResult += '<div class="viewMoreAlbums"><a href="#" id="albumsMore">'+"View More"+'</a></div>';
+      $('#albums').css('overflow-y', 'hidden');
     }
     $albums.html(albumsResult);
   }
 
   function renderRelated(relatedArtists) {
-    // console.log('relatedArtists: ', relatedArtists);
-    // console.log('passed to template2: ', relatedArtists.artists);
+    console.log('relatedArtists: ', relatedArtists);
+    console.log('passed to template2: ', relatedArtists.artists);
     var rArtistsResult = '';
-     rArtistsResult += '<div class="no-text section-header"><div class="title"><h3>'+"Related Artists"+'</h3></div></div>';
     for (var i = 0; i < 5; i++) {
       // var artistPicture = rArtists;
       var artistName = relatedArtists.artists[i].name;
       var artistID = relatedArtists.artists[i].id;
       var artistImage = relatedArtists.artists[i].images[0].url;
       var artistPopularity = relatedArtists.artists[i].popularity;
-      // if (i == 2) {
-      //   rArtistsResult += '<div class="no-text section-header"><div class="title"><i class="material-icons">'+"headset"+'</i><h3>'+"Related Artists"+ '</h3></div></div>';
-      // }
-      rArtistsResult += '<figure class="effect-apollo"><a class="artist" data-selected-index="'+i+'" data-navigation-item="1" data-artist-name="'+artistName+'" href="'+artistID+'"><img src="'+artistImage+'"><figcaption><h2>'+artistName+'</h2></figcaption></a></figure>';
+      if (i == 2) {
+        rArtistsResult += '<div class="no-text section-header wow flipInX"><div class="title"><i class="material-icons">'+"headset"+'</i><h3>'+"Related Artists"+ '</h3></div></div>';
+      }
+      rArtistsResult += '<figure class="effect-apollo wow fadeIn"><a class="artist" data-selected-index="'+i+'" data-navigation-item="1" data-artist-name="'+artistName+'" href="'+artistID+'"><img src="'+artistImage+'"><figcaption><h2>'+artistName+'</h2></figcaption></a></figure>';
       console.log("artistResult: " + rArtistsResult);
     }
     $relatedArtists.html(rArtistsResult);
@@ -267,11 +310,11 @@
 
   function renderArtistImage(artist) {
     console.log("artist image: " + artist);
-    $artistImage.attr('src', artist.images[1].url);
+    $artistImage.attr('src', artist.images[2].url);
     $artistName.html(artist.name);
   }
 
-  function getBiographies(query){
+    function getBiographies(query){
   // console.log("biographies: "+selectedID);
     $.ajax({
       url:"http://developer.echonest.com/api/v4/artist/biographies?api_key=WFQW0DDRWPPLDK1JT&id=spotify:artist:"+selectedID,
@@ -290,6 +333,10 @@
 };
 
 
+  function renderVideos(response) {
+    console.log('video response: ', response);
+  }
+
   function displayArtistData(index) {
     selectedArtistData = searchResultData.artists.items[index];
     selectedID = searchResultData.artists.items[index].id;
@@ -298,6 +345,7 @@
     getTopTracksByID(selectedID);
     getBiographies(selectedID);
     getAlbums(selectedID);
+    getTweets(selectedID);
     getRelatedByID(selectedID);
     // $searchResults.html('');
   }

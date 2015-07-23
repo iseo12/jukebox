@@ -21,7 +21,6 @@
 <!--LANDING PAGE-->
 <!-- <div id="withborder"> -->
   <div class="full-background valign-wrapper" id="intro">
-
     <div class="intro-text center-align">
     <h2>Artist Jukebox</h2>
     <h4>Powered by Spotify</h4>
@@ -211,10 +210,15 @@
       <script src="js/jquery.tmpl.min.js"></script>
       <script src="js/materialize.min.js"></script>
       <script src="js/spotify-web-api.js"></script>
+      <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
       <script src="js/localstoragedb.min.js"></script>
       <script src="js/spotifykeys.js"></script>
       <script src="js/autocomplete.js"></script>
       <script src="src/js/main.js"></script>
+      <script>
+        new WOW().init();
+      </script>      
+
 
     </body>
   </html>
