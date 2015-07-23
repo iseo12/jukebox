@@ -6,6 +6,8 @@
   var albumPopularity = ''; 
   var $ajaxlog = $('#ajaxlog');  
   var $bioPlaceholder = $('#selectedArtistBio');
+  var $bio = $('#bio');
+  var $viewMoreBio = $('#viewMoreBio');
   var $artistImage = $("#artistImage");
   var $artistName = $("#artistName");
   // var $selectedArtistTemplate = $('#selectedartisttemplate');
@@ -54,7 +56,7 @@
         });
         $('.fixed-action-btn').removeClass('hidden');
         $('#top10tracks').removeClass('hidden');
-        $('#withoutborder').removeClass('hidden');      
+        $('#artistContent').removeClass('hidden');      
       }
     }
   }); 
@@ -164,19 +166,19 @@
     .pipe(renderArtistImage);
   }
 
-  function getTweets(artistID) {
-    var eID = 'spotify:artist:' + artistID;
-    var url = 'http://developer.echonest.com/api/v4/artist/twitter?api_key=RKFREUONDORDOYUPI&id='+eID+'&format=json'
-    console.log('tweetsID: ', eID);
-    $.ajax ({
-      url: url,
-      success: function(data) {
-        console.log('Tweets data: ', data);
-        return $.get(url)
-        .pipe(renderTweets);
-      }
-    });
-  }
+  // function getTweets(artistID) {
+  //   var eID = 'spotify:artist:' + artistID;
+  //   var url = 'http://developer.echonest.com/api/v4/artist/twitter?api_key=RKFREUONDORDOYUPI&id='+eID+'&format=json'
+  //   console.log('tweetsID: ', eID);
+  //   $.ajax ({
+  //     url: url,
+  //     success: function(data) {
+  //       console.log('Tweets data: ', data);
+  //       return $.get(url)
+  //       .pipe(renderTweets);
+  //     }
+  //   });
+  // }
 
   function trimResults(response) {
     if (response.artists.length > RELATED_LIMIT) {
@@ -251,19 +253,18 @@
     $topTracks.html(topTracksResult);
   }
 
-  function renderTweets(data) {
-    var tweetResults = '';
-    var twitterHandle = data.response.artist.twitter;
-    console.log('twitter handle: ', twitterHandle);
-    var twitterUrl = 'https://twitter.com/'+ twitterHandle;
-    tweetResults += '<a class="twitter-timeline" href="'+twitterUrl+'" data-widget-id="623924186801639424">'+"Tweets by @" +twitterHandle+'</a>';
-    $(tweetResults).prepend($('#tweets'));
-  }
+  // function renderTweets(data) {
+  //   var tweetResults = '';
+  //   var twitterHandle = data.response.artist.twitter;
+  //   console.log('twitter handle: ', twitterHandle);
+  //   var twitterUrl = 'https://twitter.com/'+ twitterHandle;
+  //   tweetResults += '<a class="twitter-timeline" href="'+twitterUrl+'" data-widget-id="623924186801639424">'+"Tweets by @" +twitterHandle+'</a>';
+  //   $(tweetResults).prepend($('#tweets'));
+  // }
 
   function renderAlbums(albums) {
     var albumsResult = '';
     var response = albums.items;
-    albumsResult += '<div class="no-text section-header wow flipInX"><div class="title"><i class="material-icons">'+"album"+'</i><h3>'+"Albums"+'</h3></div></div>';
     if (response[0].name != 'null') {
       albumsResult += '<figure class="effect-apollo"><a href="'+response[0].external_urls.spotify+'" target="_blank"><img src="'+response[0].images[0].url+'"><figcaption><h2>'+response[0].name+'</h2></figcaption></a></figure>'
     }
@@ -297,9 +298,6 @@
       var artistID = relatedArtists.artists[i].id;
       var artistImage = relatedArtists.artists[i].images[0].url;
       var artistPopularity = relatedArtists.artists[i].popularity;
-      if (i == 2) {
-        rArtistsResult += '<div class="no-text section-header wow flipInX"><div class="title"><i class="material-icons">'+"headset"+'</i><h3>'+"Related Artists"+ '</h3></div></div>';
-      }
       rArtistsResult += '<figure class="effect-apollo wow fadeIn"><a class="artist" data-selected-index="'+i+'" data-navigation-item="1" data-artist-name="'+artistName+'" href="'+artistID+'"><img src="'+artistImage+'"><figcaption><h2>'+artistName+'</h2></figcaption></a></figure>';
       console.log("artistResult: " + rArtistsResult);
     }
@@ -308,9 +306,28 @@
 
   function renderArtistImage(artist) {
     console.log("artist image: " + artist);
-    $artistImage.attr('src', artist.images[2].url);
+    $artistImage.attr('src', artist.images[0].url);
     $artistName.html(artist.name);
   }
+
+    function getBiographies(query){
+  // console.log("biographies: "+selectedID);
+    $.ajax({
+      url:"http://developer.echonest.com/api/v4/artist/biographies?api_key=WFQW0DDRWPPLDK1JT&id=spotify:artist:"+selectedID,
+      success: function(data){
+      for (var i = 0; i < data.response.biographies.length; i++) {
+        var biotext = data.response.biographies[i].text;
+        if (biotext.length > 100) {
+          $bio.html(biotext); 
+          var biourl = '<a href="'+data.response.biographies[i].url+'" target="_blank" id="bioButton">More</a>';
+          $viewMoreBio.html(biourl);
+          break;
+        } 
+      }
+    }
+  });
+};
+
 
   function renderVideos(response) {
     console.log('video response: ', response);
@@ -322,8 +339,9 @@
     console.log('passed to template1: ', selectedArtistData);
     getArtistImage(selectedID);
     getTopTracksByID(selectedID);
+    getBiographies(selectedID);
     getAlbums(selectedID);
-    getTweets(selectedID);
+    // getTweets(selectedID);
     getRelatedByID(selectedID);
     // $searchResults.html('');
   }
