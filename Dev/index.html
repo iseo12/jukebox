@@ -9,6 +9,7 @@
 <link href="css/materialize.min.css" type="text/css" rel="stylesheet"  media="screen,projection"/> 
 
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="css/animate.css"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -41,13 +42,7 @@
     <a class="btn-floating btn-large indigo">
       <i class="large material-icons searchAgain" data-navigation-item="2">search</i>
     </a>
- <!--    <ul>
-      <li><a class="btn-floating indigo lighten-1"><i class="material-icons">search</i></i></a></li>
-      <li><a class="btn-floating indigo darken-1"><i class="material-icons">person_pin</i></a></li>
-      <li><a class="btn-floating indigo darken-2"><i class="material-icons">library_music</i></a></li>
-      <li><a class="btn-floating indigo darken-3"><i class="material-icons">album</i></a></li>
-      <li><a class="btn-floating indigo darken-4"><i class="material-icons">headset</i></a></li>
-    </ul> -->
+
   </div>
   </header>
   <!-- 
@@ -110,21 +105,24 @@
       </div>
   </section> -->
 
-  <section id="artist" class="hidden content-1 container">
-     <div class="title row">
-        <h3 class="col s12">Bio</h3>  
+  <section id="artist" class="hidden content-1">
+     <div class="title">
+               <i class="material-icons">nature_people</i> 
+        <h3>Bio</h3>  
      </div>
       
-      <div class="bio-header row center-align">
+      <div class="bio-header row center-align container">
             <img id="artistImage" class="col s12 m6 l6">
             <h2 id="artistName" class="col s12"></h2>
       </div>
 
-        <div class="bio-text col s8 m2 l2">
+
+<div id="viewBio"></div>
+        <div class="bio-text col s8 m2 l2 container">
            <p id="bio"></p>
         </div>
-    
-    <div id="viewMoreBio"></div>
+    <!-- 
+    <div id="viewMoreBio"></div> -->
 
 
       </div>
@@ -138,9 +136,9 @@
    <section id="top10tracks" class="full-background hidden content-3">
        <div class="section-header">
           <div class="title"> 
-          <!--   <i class="material-icons">library_music</i> -->
+          <i class="material-icons">library_music</i> 
             <h3>Top Tracks</h3>
-        <span class="bar"></span> 
+      </div>
       </div>
       <div class="tabletrack">
         <table>
@@ -166,8 +164,12 @@
     </section>
    </div> 
 
-<div id="artistContent" class="withborder hidden">
+<div id="artistContent" class="hidden">
 <!--ALBUMS PAGE-->
+      <div class="title container"> 
+          <i class="material-icons">album</i> 
+            <h3>Albums</h3>
+      </div>
   <div id="albums" class="full-background clearfix">      
       
      <!--   <div class="no-text section-header">
@@ -183,13 +185,17 @@
     </div> -->
 
 <!--RELATED ARTISTS PAGE-->
+          <div class="title container"> 
+          <i class="material-icons">library_music</i> 
+            <h3>Related Artists</h3>
+      </div>
   <section id="relatedArtists" class="full-background clearfix">  
-    <div class="no-text section-header">
+    <!-- <div class="no-text section-header">
       <div class="title">
-<!--         <i class="material-icons">headset</i> -->
+        <i class="material-icons">headset</i>
         <h3>Related Artists</h3>
       </div>
-    </div>  
+    </div>   -->
     <!-- <figure class="effect-apollo">
         <img src="../Assets/1.jpg" alt="album">
         <figcaption>
@@ -215,6 +221,7 @@
       <script src="js/spotifykeys.js"></script>
       <script src="js/autocomplete.js"></script>
       <script src="src/js/main.js"></script>
+      <script src="js/wow.min.js"></script>
       <script>
         new WOW().init();
       </script>      
