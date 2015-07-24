@@ -39,6 +39,86 @@
   });  
   
   $('.modal-trigger').leanModal();
+
+  $(document).ready(function(){
+
+  //open-close submenu on mobile
+  /*
+  $('.cd-main-nav').on('click', function(event){
+    if($(event.target).is('.cd-main-nav')) $(this).children('ul').toggleClass('is-visible');
+  });
+  */
+  
+  var clickedLink;
+  
+  function toggleActiveNav($el){
+    console.log("toggleActiveNav: " + $el);
+    $(".cd-main-nav a").removeClass("active");
+    $el.addClass("active");
+    
+  }
+  
+  function scrollToSection($section){
+    console.log("scrollToSection: " + $section);
+    
+    var goalY = $($section).offset().top;       
+    $("body").animate({"scrollTop": goalY}, 800, function(){toggleActiveNav(clickedLink);});
+  }
+  
+  
+  $('#intro').parallax("50%", 0.4);
+  $('#kittens').parallax("50%", 0.5);
+  $('#puppies').parallax("50%", 0.3);
+  
+  $(".cd-main-nav a").click(function(event){
+    event.preventDefault();
+    //toggleActiveNav($(this));
+    clickedLink = $(this);
+    scrollToSection($(this).attr("href"));
+  });
+   
+
+  //distance to top of each section
+          <li><a href="#intro" class="active">Mac Jagger</a></li>
+        <li><a href="#search">Search</a></li>
+        <li><a href="#artist">Artist Info</a></li>
+        <li><a href="#top10tracks">Top 10 Tracks</a></li>
+        <li><a href="#relatedArtists">Related Artists</a></li>
+
+  var navHeight = $(".cd-header").height();
+  var introTop = $('#intro').offset().top - navHeight;
+  var kittensTop = $('#search').offset().top - navHeight;
+  var puppiesTop = $('#puppies').offset().top - navHeight;
+  var contactTop = $('#contact').offset().top - navHeight;
+
+  window.onscroll = function (event) {
+    var goalWidth = (($("body").scrollTop()+$(window).height())/$(document).height())*100;
+
+    //current vertical position
+    var verticalPosition = $("body").scrollTop();
+
+    if ((verticalPosition >= kittensTop) && (verticalPosition < puppiesTop)){
+      toggleActiveNav($(".cd-main-nav a").eq(1));
+    }
+    else if((verticalPosition >= puppiesTop) && (verticalPosition < contactTop)){
+      toggleActiveNav($(".cd-main-nav a").eq(2));
+    }
+    else if(verticalPosition >= contactTop){
+      toggleActiveNav($(".cd-main-nav a").eq(3));
+    }
+    else {
+      toggleActiveNav($(".cd-main-nav a").eq(0));
+    }
+
+    /*console.log("$(body).scrollTop(): " + $("body").scrollTop());
+    console.log("$(body).outerHeight(): " + $("body").outerHeight());
+    console.log("$(document).height(): " + $(document).height());
+    console.log("goalWidth: " + goalWidth);*/
+    $(".cd-main-nav").find(".progress").css({"width": goalWidth+"%"});
+  } 
+
+});
+
   
   $('#artistSearch').keypress(function(e) {
     if (e.which == 13) {
@@ -81,7 +161,7 @@
   $('body').on('click', '#topTracksMore', function(e) {
     e.preventDefault();
     $('.viewMoreTracks').css('display', 'none');
-    $('#top10tracks').css('overflow-y', 'visible');
+    $('#top10tracks').css('overflow-y', 'hidden');
     $('#top10tracks').css('height', '100%')
     $('.viewLessTracks').css('display', 'block');
   });
@@ -267,7 +347,7 @@
     var response = albums.items;
     if (response[0].name != 'null') {
       // albumsResult += '<div class="no-text section-header"><div class="title"><i class="material-icons">'+"albums"+'</i><h3>'+"Albums"+'</h3></div></div>';
-      albumsResult += '<figure class="effect-apollo"><a href="'+response[0].external_urls.spotify+'" target="_blank"><img src="'+response[0].images[0].url+'"><figcaption><h2>'+response[0].name+'</h2></figcaption></a></figure>'
+      albumsResult += '<figure class="effect-apollo"><a href="'+response[0].external_urls.spotify+'" target="_blank"><img src="'+response[0].images[0].url+'"><figcaption><h2>'+response[0].name+'</h2><i class="material-icons">play_circle_filled</i></figcaption></a></figure>'
     }
     for (var i = 0; i < response.length-1; i++) {
       var albumNamePrev = response[i].name;
@@ -279,7 +359,7 @@
       var externalURL = response[i+1].external_urls.spotify;
       console.log('albums: ' + response);
       if (albumNameCur != albumNamePrev && response[i].type === 'album') {
-        albumsResult += '<figure class="effect-apollo wow fadeIn"><a href="'+externalURL+'" target="_blank"><img src="'+albumCover+'"><figcaption><h2>'+albumNameCur+'</h2></figcaption></a></figure>';
+        albumsResult += '<figure class="effect-apollo wow fadeIn"><a href="'+externalURL+'" target="_blank"><img src="'+albumCover+'"><figcaption><h2>'+albumNameCur+'</h2><i class="material-icons">play_circle_filled</i></figcaption></a></figure>';
       }
     }
     if (response.length > 5) {
@@ -300,7 +380,7 @@
       var artistID = relatedArtists.artists[i].id;
       var artistImage = relatedArtists.artists[i].images[0].url;
       var artistPopularity = relatedArtists.artists[i].popularity;
-      rArtistsResult += '<figure class="effect-apollo wow fadeIn"><a class="artist" data-selected-index="'+i+'" data-navigation-item="1" data-artist-name="'+artistName+'" href="'+artistID+'"><img src="'+artistImage+'"><figcaption><h2>'+artistName+'</h2></figcaption></a></figure>';
+      rArtistsResult += '<figure class="effect-apollo wow fadeIn"><a class="artist" data-selected-index="'+i+'" data-navigation-item="1" data-artist-name="'+artistName+'" href="'+artistID+'"><img src="'+artistImage+'"><figcaption><h2>'+artistName+'</h2><i class="material-icons">youtube_searched_for</i></figcaption></a></figure>';
       console.log("artistResult: " + rArtistsResult);
     }
     $relatedArtists.html(rArtistsResult);
@@ -321,7 +401,7 @@
         var biotext = data.response.biographies[i].text;
         if (biotext.length > 100) {
           $bio.html(biotext); 
-          var biourl = '<a href="'+data.response.biographies[i].url+'" target="_blank" id="bioButton">More</a>';
+          var biourl = '<a href="'+data.response.biographies[i].url+'" target="_blank"><i class="material-icons">link</i></a>';
           $viewMoreBio.html(biourl);
           break;
         } 

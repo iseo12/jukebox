@@ -13,6 +13,152 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+.cd-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+.cd-header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.cd-header #cd-logo {
+  float: left;
+  margin: 13px 0 0 5%;
+}
+.cd-header #cd-logo img {
+  display: block;
+}
+@media only screen and (min-width: 768px) {
+  .cd-header {
+    height: 70px;
+  }
+  .cd-header #cd-logo {
+    margin: 23px 0 0 5%;
+  }
+}
+
+.cd-main-nav {
+  float: right;
+  margin-right: 5%;
+  width: 44px;
+  height: 100%;
+  background: url("../img/cd-icon-menu.svg") no-repeat center center;
+  background-size: 44px 44px;
+  cursor: pointer;
+}
+.cd-main-nav ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.cd-main-nav ul.is-visible {
+  -webkit-transform: translateY(50px);
+  -moz-transform: translateY(50px);
+  -ms-transform: translateY(50px);
+  -o-transform: translateY(50px);
+  transform: translateY(50px);
+}
+.cd-main-nav a {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 5%;
+  background: #2f292a;
+  border-top: 1px solid #453c3d;
+  color: #8e7d7f;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+
+}
+.cd-main-nav a.active{
+  color: #99a478;
+}
+
+.progress-bar{
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #666;
+  position: relative;
+}
+.progress{
+  height: 100%;
+  background-color: #B4D7A8;
+  width: 0px;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;  
+}
+
+@media only screen and (min-width: 768px) {
+  .cd-main-nav {
+    width: auto;
+    height: auto;
+    background: none;
+    cursor: auto;
+  }
+  .cd-main-nav ul {
+    position: static;
+    width: auto;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    line-height: 70px;
+  }
+  .cd-main-nav ul.is-visible {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .cd-main-nav li {
+    display: inline-block;
+    margin-left: 1em;
+  }
+  .cd-main-nav a {
+    display: inline-block;
+    height: auto;
+    line-height: normal;
+    background: transparent;
+    padding: .6em 1em;
+    border-top: none;
+    color: #3d3536;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-size: 0.875rem;
+  }
+  .no-touch .cd-main-nav a:hover {
+    color: #99a478;
+  }
+}
+
+
+
+
+
+
+/*-----------NAV----------*/
 .full-background {
   height: 100vh;
   width: 100%;
@@ -142,7 +288,9 @@ main h3{
 /*  margin: 50px;*/
   width: 100%;
   background-color: #1a237e;
-  margin:0 auto;
+  margin:5px auto;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 /*  height: 10em;*/
   /*border: 3px solid;*/
 }
@@ -155,23 +303,23 @@ main h3{
 }
 
 .title i{
-  margin: 0 auto;
+  margin: 50px auto 0;
   font-size: 36px;
 }
 
 .title h3{
   font-size: 3em;
   font-weight:800;
+  margin: 0 auto 50px;
 }
 
 /*#artistContent i, #artistContent h3 {
   color:#fff;
 }*/
 
-/*#artistContent .title, #top10tracks .title{
-  background-color: #1a237e;
-  margin:20px auto;
-}*/
+#top10tracks {
+  margin:8px auto 0;
+}
 
 /*#top10tracks .title i h3{
   margin-top: 0px;
@@ -206,20 +354,13 @@ main h3{
   color:#fff;
 }*/
 
-#artist{
-  position:relative;
-}
 .bio-header{
   width: 100%;
-  margin: 0 auto;
-}
-
-#artistImage {
-  float: none;
+  margin: 5em auto 1.5em;
 }
 
 .bio-text{
-  margin: 0 auto;
+  margin: 0 auto 5em;
   text-align: center;
   height: 50vh;
   overflow-y: scroll;
@@ -231,6 +372,9 @@ main h3{
   font-size:1em;
 }
 
+#artist i{
+  color:#fff;
+}
 .viewBio {
   display: none;
   height: 50px;
@@ -239,6 +383,7 @@ main h3{
   text-align:center;
   margin:3em;
 }
+
 
 /*#viewMoreBio{
   text-align: center;
@@ -249,13 +394,13 @@ main h3{
   max-height:55vh;
 }*/
 
-#artist h2{
+/*#artist h2{
   margin: 5vh auto;
   text-transform: uppercase;
   font-weight: 800;
   font-size:3em;
   color: #1a237e;
-}
+}*/
 
 #albums {
   overflow-y: hidden;
@@ -285,7 +430,7 @@ main h3{
 
 #top10tracks .tabletrack{
   width:70%;
-  margin:.5em auto;
+  margin: 3em auto 3em;
 }
 
 #topTracks img{
@@ -300,7 +445,7 @@ main h3{
 
 .viewLessTracks {
   display: none;
-  height: 50px;
+  height: 70px;
   padding: 10px 0px;
   position: relative;
   text-align:center;
@@ -320,7 +465,7 @@ main h3{
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 100%;
-  height: 50px;
+  height: 55px;
   z-index: 10;
 }
 
@@ -347,6 +492,125 @@ main h3{
   background-color: #ffffff;
   color: #cddc39;
 }
+
+.bio-header {
+  position: relative;
+  overflow: hidden;
+  /*margin: 10px 1%;*/
+/*  min-width: 320px;*/
+  max-width: 480px;
+  width: 100%;
+  height: 322px; /*50%;*/
+}
+
+.module img {
+  position: relative;
+  display: block;
+  min-height: 100%;
+  max-width: 100%;
+  opacity: 0.5;
+  width: 300px;
+}
+
+.bio-header p {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 4rem;
+  transform: translate(-50%, -50%);
+  margin:0;
+  text-transform:uppercase;
+  font-weight:800;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+/*-----------------*/
+/***** BIO *****/
+/*-----------------*/
+
+figure.effect-bio {
+  background: #162633;
+  text-align: left;
+}
+
+figure.effect-bio img {
+  -webkit-transition: opacity 0.45s;
+  transition: opacity 0.45s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+figure.effect-bio h2 {
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0,20px,0);
+  transform: translate3d(0,20px,0);
+}
+
+figure.effect-bio p {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0 1.5em 7% 0;
+}
+
+figure.effect-bio a {
+  margin: 0 10px;
+  color: #1a237e;
+  font-size: 170%;
+}
+
+figure.effect-bio a:hover,
+figure.effect-bio a:focus
+ {
+  color: #1a237e;
+}
+
+figure.effect-bio p a i {
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(0,50px,0);
+  transform: translate3d(0,50px,0);
+}
+
+figure.effect-bio:hover img {
+  opacity: 0.6;
+}
+
+figure.effect-bio:hover h2 {
+  color: #1a237e;
+  font-weight:800;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+/*figure.effect-bio:hover figcaption::before {
+  opacity: 0.7;
+  -webkit-transform: rotate3d(0,0,1,20deg);
+  transform: rotate3d(0,0,1,20deg);
+}*/
+
+figure.effect-bio:hover p i {
+  opacity: 1;
+  font-color: #1a237e;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+figure.effect-bio:hover p a:first-child i {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+
+figure.effect-bio {
+  width:100%;
+}
+
+/*-----------------*/
 
 /*ALBUM AND RELATED ARTIST PAGES*/
 .withborder .full-background { 
@@ -434,11 +698,15 @@ figure p {
   font-size: 68.5%;
 }
 
-figure.effect-apollo {
+#albums figure.effect-apollo {
   background: #3F53B1;
   margin: 0;
 }
 
+#relatedArtists figure.effect-apollo{
+background:#8BC34A;
+margin:0;
+}
 figure.effect-apollo img {
   opacity: 0.85;
   width: 100%;
@@ -462,15 +730,15 @@ figure.effect-apollo figcaption::before {
   transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
 }
 
-figure.effect-apollo p {
+figure.effect-apollo i {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 3em;
-  padding: 0 1em;
+  right: 50px;
+  bottom: 50px;
+  margin: 0;
+  padding: 0;
   max-width: 200px;
-  border-right: 4px solid #fff;
-  text-align: right;
+  font-size: 130px;
+  text-align:center;
   opacity: 0;
   -webkit-transition: opacity 0.35s;
   transition: opacity 0.35s;
@@ -479,6 +747,7 @@ figure.effect-apollo p {
 figure.effect-apollo h2 {
   text-align: left;
 }
+
 
 figure.effect-apollo:hover img {
   opacity: 0.6;
@@ -489,15 +758,20 @@ figure.effect-apollo:hover img {
 figure.effect-apollo:hover figcaption::before {
   -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
   transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+    font-weight:800;
 }
 
-figure.effect-apollo:hover p {
-  opacity: 1;
+figure.effect-apollo:hover i {
+  opacity: .8;
   -webkit-transition-delay: 0.1s;
   transition-delay: 0.1s;
 }
 
-
+figure.effect-apollo:hover h2 {
+  font-weight:800;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
 
 
 @media only screen and (max-width: 999px) {
@@ -567,6 +841,7 @@ figure.effect-apollo:hover p {
   width:100%;
   text-align: center;
   display: block;
+  margin-top: 5em auto 0;
 }
 
 .bio-text{
@@ -578,6 +853,14 @@ figure.effect-apollo:hover p {
   width: 80%;
   overflow-y: scroll;
   text-align: center;
+}
+
+.bio-header img{
+  position: relative;
+  min-height: 100%;
+  opacity: 0.7;
+  min-width: 0;
+  width:50%;
 }
 
 .bio-text p{
@@ -595,11 +878,11 @@ figure.effect-apollo:hover p {
 }
 
 #artist h2{
-  margin: 1.5vh auto .1vh;
-  text-transform: uppercase;
+/*  margin: 1.5vh auto .1vh;*/
+/*  text-transform: uppercase;
   font-weight: 800;
-  font-size:3em;
-  color: #1a237e;
+  font-size:3em;*/
+  color: #fff;
 }
 
 /*MUSIC*/
@@ -687,13 +970,13 @@ min-width: 0;
   max-height:55vh;
 }
 
-#artist h2{
+/*#artist h2{
   margin: 1.5vh auto .1vh;
   text-transform: uppercase;
   font-weight: 800;
   font-size:3em;
   color: #1a237e;
-}
+}*/
 
 
 .withoutborder .full-background{
