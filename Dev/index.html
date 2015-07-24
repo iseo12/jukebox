@@ -19,6 +19,27 @@
     <body>
       <header>
 
+
+<div class="cd-header">
+<div id="cd-logo"><a href="#0"><img src="../Assets/newspotifywhite.svg" alt="Logo"></a></div>
+
+    <nav class="cd-main-nav">
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>  
+      <ul>
+        <!-- inser more links here -->
+        <li><a href="#intro" id="artistNameNav" class="active"></a></li>
+        <li><a href="#search">Search</a></li>
+        <li><a href="#artist">Artist Info</a></li>
+        <li><a href="#top10tracks">Top 10 Tracks</a></li>
+        <li><a href="#relatedArtists">Related Artists</a></li>
+      </ul>
+
+    </nav> <!-- cd-main-nav -->
+  </div>
+
+
 <!--LANDING PAGE-->
 <!-- <div id="withborder"> -->
   <div class="full-background valign-wrapper" id="intro">
@@ -42,21 +63,16 @@
     <a class="btn-floating btn-large indigo">
       <i class="large material-icons searchAgain" data-navigation-item="2">search</i>
     </a>
- <!--    <ul>
-      <li><a class="btn-floating indigo lighten-1"><i class="material-icons">search</i></i></a></li>
-      <li><a class="btn-floating indigo darken-1"><i class="material-icons">person_pin</i></a></li>
-      <li><a class="btn-floating indigo darken-2"><i class="material-icons">library_music</i></a></li>
-      <li><a class="btn-floating indigo darken-3"><i class="material-icons">album</i></a></li>
-      <li><a class="btn-floating indigo darken-4"><i class="material-icons">headset</i></a></li>
-    </ul> -->
+
   </div>
   </header>
+
+
+
+
   <!-- 
 
 <nav>      
-
-
-
    <a href="#"><img src="#" alt="NAV BUTTON"></a>
       <div class="modal">
         <div class="container">
@@ -111,26 +127,47 @@
       </div>
   </section> -->
 
-  <section id="artist" class="hidden content-1 container">
-    <div class="title row">
-      <h2 id="artistName" class="col s12"></h2>
-    </div>
+  <section id="artist" class="hidden content-1">
+     <div class="title">
+        <i class="material-icons">nature_people</i> 
+        <h3>Bio</h3>  
+     </div>
       
-    <div class="bio-header row center-align">
-      <div id="artistImgContainer" class="col s12 m6 l6">
-        <img id="artistImage">
-      </div>
-      <div id="twitter">
-        <a class="twitter-timeline" href="#" data-widget-id="624260310212419584" data-screen-name:"#" data-chrome:"nofooter noborders"></a>
-      </div>
-      <h3 class="col s12">About</h3>  
-    </div>
+        <div class="bioimg">
+          <figure class="effect-bio cols12">
+            <img id="artistImage" alt="Artist Image"/>
+            <figcaption>
+              <h2 id="artistName"></h2>
+              <p>
+                <a id="viewMoreBio"></a>
+                <!-- <a href="#"><i class="material-icons">nature_people</i></a>
+                <a href="#"><i class="material-icons">nature_people</i></a> -->
+              </p>
+            </figcaption>     
+          </figure>
+        </div>
+        <div id="twitter">
+          <a class="twitter-timeline" href="#" data-widget-id="624260310212419584" data-screen-name:"#" data-chrome:"nofooter noborders"></a>
+        </div>
 
-    <div class="bio-text col s8 m2 l2">
-      <p id="bio"></p>
-    </div>
-
-    <div id="viewMoreBio"></div>
+<!--           <figure class="effect-terry">
+            <img id="artistImage" class="col s12"/>
+            <figcaption>
+              <h2 id="artistName" class="col s12">
+              <p>
+               <a href="#"><i class="material-icons">nature_people</i> </a>
+              </p>
+            </figcaption>     
+          </figure> -->
+      
+<!--       <div class="bio-header row center-align container">
+            <img id="artistImage" class="col s12">
+            <div class="module lr">
+              <p id="artistName"></p>
+            <h2 id="artistName" class="col s12"></h2>
+            <div id="viewMoreBio"></div>
+      </div>
+ -->
 
   </section>
 
@@ -141,9 +178,9 @@
    <section id="top10tracks" class="full-background hidden content-3">
        <div class="section-header">
           <div class="title"> 
-          <!--   <i class="material-icons">library_music</i> -->
+          <i class="material-icons">library_music</i> 
             <h3>Top Tracks</h3>
-        <span class="bar"></span> 
+      </div>
       </div>
       <div class="tabletrack">
         <table>
@@ -169,8 +206,12 @@
     </section>
    </div> 
 
-<div id="artistContent" class="withborder hidden">
+<div id="artistContent" class="hidden">
 <!--ALBUMS PAGE-->
+      <div class="title container"> 
+          <i class="material-icons">album</i> 
+            <h3>Albums</h3>
+      </div>
   <div id="albums" class="full-background clearfix">      
       
      <!--   <div class="no-text section-header">
@@ -186,6 +227,10 @@
     </div> -->
 
 <!--RELATED ARTISTS PAGE-->
+          <div class="title container clearfix"> 
+          <i class="material-icons">library_music</i> 
+            <h3>Related Artists</h3>
+      </div>
   <section id="relatedArtists" class="full-background clearfix">  
     <!-- <div class="no-text section-header">
       <div class="title">

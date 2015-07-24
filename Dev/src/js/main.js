@@ -49,20 +49,20 @@
   $('#artistSearch').keypress(function(e) {
     if (e.which == 13) {
       e.preventDefault();
-      console.log($artistSearch.val());
-      var query = $artistSearch.val();
+      console.log($('#artistSearch').val());
+      var query = $('#artistSearch').val();
       if (query.length > 2) {
         // $searchResults.html('');
         searchArtists(query);
-        $('#artist').removeClass('hidden');
         var targetContent = $(this).data('navigation-item');
         var topPosition = $('.content-' + targetContent).offset().top;
         $('body').animate ({
           scrollTop: topPosition
         });
+        $('#artist').removeClass('hidden');
         $('.fixed-action-btn').removeClass('hidden');
         $top10tracks.removeClass('hidden');
-        $('#artistContent').removeClass('hidden');      
+        $('#artistContent').removeClass('hidden');     
       }
     }
   }); 
@@ -96,7 +96,7 @@
     e.preventDefault();
     $albums.css('overflow-y', 'visible');
     $albums.css('height', '100%');
-    $viewMoreAlbums.css('display', 'none');
+    $viewMoreAlbums.addClass('hidden');
   });
 
   $('body').on('click', '#topTracksLess', function(e) {
@@ -121,7 +121,7 @@
       $top10tracks.css('height', '100vh');
       $top10tracks.css('overflow-y', 'hidden');
       $albums.css('height', '100vh');
-      $viewMoreAlbums.css('display', 'block');
+      $viewMoreAlbums.removeClass('hidden');
       var targetContent = $(this).data('navigation-item');
       var topPosition = $('.content-' + targetContent).offset().top;
       $('body').animate ({
@@ -172,7 +172,6 @@
     .pipe(renderArtistImage);
   }
 
-
   function insertTwitter(d,s,id){
     console.log('insert twitter');
     var js,fjs=d.getElementsByTagName(s)[0],
@@ -184,7 +183,6 @@
       fjs.parentNode.insertBefore(js,fjs);
     }
   };
-
 
   function getTweets(artistID) {
     var eID = 'spotify:artist:' + artistID;
@@ -226,12 +224,14 @@
       url: url,
       data: oData,
       success: function(data) {
-        return $.get(url, oData)
-        .pipe(renderSearchResults);
-      },
-      fail: function(){
-        alert("Please input valid artist");
-      } 
+        if (data.artists.items.length == 0) {
+          console.log('failed');
+        }
+        else { 
+          return $.get(url, oData)
+          .pipe(renderSearchResults);
+        }
+      }
     });
   }
 
@@ -254,9 +254,9 @@
       var trackTime = topTracks.tracks[i].duration_ms;
       var seconds = Math.round(trackTime/1000);
       var minutes = Math.floor(seconds/60);
-      var time = minutes + ":" + seconds%60;
+      var time = minutes%60 + ":" + seconds%60;
       if (time.length == 3) {
-        time = minutes + ':0' + seconds%60;
+        time += '0';
       }
       console.log("track time: " + trackTime);
       var albumCover = topTracks.tracks[i].album.images[2].url;
@@ -282,7 +282,6 @@
     var albumsResult = '';
     var response = albums.items;
     if (response[0].name != 'null') {
-      albumsResult += '<div class="no-text section-header"><div class="title"><i class="material-icons">'+"albums"+'</i><h3>'+"Albums"+'</h3></div></div>';
       albumsResult += '<figure class="effect-apollo"><a href="'+response[0].external_urls.spotify+'" target="_blank"><img src="'+response[0].images[0].url+'"><figcaption><h2>'+response[0].name+'</h2></figcaption></a></figure>'
     }
     for (var i = 0; i < response.length-1; i++) {
@@ -309,7 +308,6 @@
     console.log('relatedArtists: ', relatedArtists);
     console.log('passed to template2: ', relatedArtists.artists);
     var rArtistsResult = '';
-    rArtistsResult += '<div class="no-text section-header"><div class="title"><i class="material-icons">'+"headset"+'</i><h3>'+"Related Artists"+'</h3></div></div>';
     for (var i = 0; i < 5; i++) {
       // var artistPicture = rArtists;
       var artistName = relatedArtists.artists[i].name;
@@ -325,6 +323,7 @@
   function renderArtistImage(artist) {
     console.log("artist image: " + artist);
     $artistImage.attr('src', artist.images[0].url);
+    $('#artistNameNav').html(artist.name);
     $artistName.html(artist.name);
   }
 
@@ -345,11 +344,6 @@
     }
   });
 };
-
-
-  function renderVideos(response) {
-    console.log('video response: ', response);
-  }
 
   function displayArtistData(index) {
     selectedArtistData = searchResultData.artists.items[index];
