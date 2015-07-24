@@ -39,6 +39,86 @@
   });  
   
   $('.modal-trigger').leanModal();
+
+  $(document).ready(function(){
+
+  //open-close submenu on mobile
+  /*
+  $('.cd-main-nav').on('click', function(event){
+    if($(event.target).is('.cd-main-nav')) $(this).children('ul').toggleClass('is-visible');
+  });
+  */
+  
+  var clickedLink;
+  
+  function toggleActiveNav($el){
+    console.log("toggleActiveNav: " + $el);
+    $(".cd-main-nav a").removeClass("active");
+    $el.addClass("active");
+    
+  }
+  
+  function scrollToSection($section){
+    console.log("scrollToSection: " + $section);
+    
+    var goalY = $($section).offset().top;       
+    $("body").animate({"scrollTop": goalY}, 800, function(){toggleActiveNav(clickedLink);});
+  }
+  
+  
+  $('#intro').parallax("50%", 0.4);
+  $('#kittens').parallax("50%", 0.5);
+  $('#puppies').parallax("50%", 0.3);
+  
+  $(".cd-main-nav a").click(function(event){
+    event.preventDefault();
+    //toggleActiveNav($(this));
+    clickedLink = $(this);
+    scrollToSection($(this).attr("href"));
+  });
+   
+
+  //distance to top of each section
+          <li><a href="#intro" class="active">Mac Jagger</a></li>
+        <li><a href="#search">Search</a></li>
+        <li><a href="#artist">Artist Info</a></li>
+        <li><a href="#top10tracks">Top 10 Tracks</a></li>
+        <li><a href="#relatedArtists">Related Artists</a></li>
+
+  var navHeight = $(".cd-header").height();
+  var introTop = $('#intro').offset().top - navHeight;
+  var kittensTop = $('#search').offset().top - navHeight;
+  var puppiesTop = $('#puppies').offset().top - navHeight;
+  var contactTop = $('#contact').offset().top - navHeight;
+
+  window.onscroll = function (event) {
+    var goalWidth = (($("body").scrollTop()+$(window).height())/$(document).height())*100;
+
+    //current vertical position
+    var verticalPosition = $("body").scrollTop();
+
+    if ((verticalPosition >= kittensTop) && (verticalPosition < puppiesTop)){
+      toggleActiveNav($(".cd-main-nav a").eq(1));
+    }
+    else if((verticalPosition >= puppiesTop) && (verticalPosition < contactTop)){
+      toggleActiveNav($(".cd-main-nav a").eq(2));
+    }
+    else if(verticalPosition >= contactTop){
+      toggleActiveNav($(".cd-main-nav a").eq(3));
+    }
+    else {
+      toggleActiveNav($(".cd-main-nav a").eq(0));
+    }
+
+    /*console.log("$(body).scrollTop(): " + $("body").scrollTop());
+    console.log("$(body).outerHeight(): " + $("body").outerHeight());
+    console.log("$(document).height(): " + $(document).height());
+    console.log("goalWidth: " + goalWidth);*/
+    $(".cd-main-nav").find(".progress").css({"width": goalWidth+"%"});
+  } 
+
+});
+
   
   $('#artistSearch').keypress(function(e) {
     if (e.which == 13) {
@@ -89,8 +169,7 @@
   $('body').on('click', '#albumsMore', function(e) {
     e.preventDefault();
     $albums.css('overflow-y', 'visible');
-    $albums.css('max-height', '0');
-    $albums.css('margin-bottom', '15px');
+    $albums.css('height', '100%');
     $('.viewMoreAlbums').css('display', 'none');
   });
 

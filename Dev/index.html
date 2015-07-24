@@ -6,21 +6,21 @@
       <title>Artist Jukebox</title>
 
       <!--Import materialize.css-->
- <link href="css/materialize.min.css" type="text/css" rel="stylesheet"  media="screen,projection"/> 
+<link href="css/materialize.min.css" type="text/css" rel="stylesheet"  media="screen,projection"/> 
+
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="css/animate.css"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
      <link href="css/main.css" type="text/css" rel="stylesheet">
-
       <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
       <header>
 
 
-<!-- <div class="cd-header">
+<div class="cd-header">
 <div id="cd-logo"><a href="#0"><img src="../Assets/newspotifywhite.svg" alt="Logo"></a></div>
 
     <nav class="cd-main-nav">
@@ -28,22 +28,23 @@
         <div class="progress"></div>
       </div>  
       <ul>
-        <li><a href="#intro" class="active">Mac Jagger</a></li>
+        <!-- inser more links here -->
+        <li><a href="#intro" id="artistNameNav" class="active"></a></li>
         <li><a href="#search">Search</a></li>
         <li><a href="#artist">Artist Info</a></li>
         <li><a href="#top10tracks">Top 10 Tracks</a></li>
         <li><a href="#relatedArtists">Related Artists</a></li>
       </ul>
 
-    </nav> <!-- cd-main-nav 
-  </div>-->
- 
+    </nav> <!-- cd-main-nav -->
+  </div>
+
 
 <!--LANDING PAGE-->
 <!-- <div id="withborder"> -->
   <div class="full-background valign-wrapper" id="intro">
     <div class="intro-text center-align">
-    <h2 class="center-align">Artist Jukebox</h2>
+    <h2>Artist Jukebox</h2>
     <h4>Powered by Spotify</h4>
     </div>
         <video autoplay loop poster="../Assets/classics.jpg" id="bgvid">
@@ -67,9 +68,37 @@
   </header>
 
 
+
+
+  <!-- 
+
+<nav>      
+   <a href="#"><img src="#" alt="NAV BUTTON"></a>
+      <div class="modal">
+        <div class="container">
+        <ul class="navigation">
+          <li><a href="#search" class="active"><img src="#">Search</a></li>
+          <li><a href="#artist"><img src="#">Artist</a></li>
+          <li><a href="#listen"><img src="#">Listen</a>
+            <ul class="submenu">
+              <li><a href="#toptracks"><img src="#">Top Tracks</a></li>
+              <li><a href="#albums"><img src="#">Albums</a></li>
+              <li><a href="#relatedartists"><img src="#">Related Artists</a>
+          </li>
+            </ul>
+          </li>
+          <li><a href="#spotify"><img src="#" alt="SPOTIFY LOGO"></a>
+        </ul>
+      </div>   
+    </nav>
+
+-->
+
 <main>
+
+<!-- <div id="withborder"> -->
 <!--1 SEARCH PAGE-->
-  <section  class="full-background valign-wrapper content-2" id="search">
+  <section  class="withborder full-background valign-wrapper content-2" id="search">
     <div class="section-text container">
           <div class="input-field">
             <i class="material-icons prefix">search</i>
@@ -82,9 +111,25 @@
 
 
 <!--2 ARTIST PAGE-->
+<!--   <section id="artist" class="hidden">
+    <div class="section-header">
+        <div class="title">
+            <i class="material-icons">face</i>
+            <h3>Bio</h3> 
+        </div>
+      
+        <div class="bio-text">
+            <img id="artistImage">
+            <h2 id="artistName"></h2>
+            <p id="bio"></p>
+        </div>
+
+      </div>
+  </section> -->
+
   <section id="artist" class="hidden content-1">
      <div class="title">
-               <i class="material-icons">nature_people</i> 
+        <i class="material-icons">nature_people</i> 
         <h3>Bio</h3>  
      </div>
       
@@ -95,12 +140,35 @@
               <h2 id="artistName"></h2>
               <p>
                 <a id="viewMoreBio"></a>
+                <!-- <a href="#"><i class="material-icons">nature_people</i></a>
+                <a href="#"><i class="material-icons">nature_people</i></a> -->
               </p>
             </figcaption>     
           </figure>
-        </div>  
+        </div>
+        <div id="twitter">
+          <a class="twitter-timeline" href="#" data-widget-id="624260310212419584" data-screen-name:"#" data-chrome:"nofooter noborders"></a>
+        </div>
+
+<!--           <figure class="effect-terry">
+            <img id="artistImage" class="col s12"/>
+            <figcaption>
+              <h2 id="artistName" class="col s12">
+              <p>
+               <a href="#"><i class="material-icons">nature_people</i> </a>
+              </p>
+            </figcaption>     
+          </figure> -->
+      
+<!--       <div class="bio-header row center-align container">
+            <img id="artistImage" class="col s12">
+            <div class="module lr">
+              <p id="artistName"></p>
+            <h2 id="artistName" class="col s12"></h2>
+            <div id="viewMoreBio"></div>
       </div>
-    </div>
+ -->
+
   </section>
 
 
@@ -140,20 +208,44 @@
 
 <div id="artistContent" class="hidden">
 <!--ALBUMS PAGE-->
-      <div class="title"> 
+      <div class="title container"> 
           <i class="material-icons">album</i> 
             <h3>Albums</h3>
       </div>
-  <div id="albums" class="clearfix full-background">      
- </div>
+  <div id="albums" class="full-background clearfix">      
+      
+     <!--   <div class="no-text section-header">
+          <div class="title">
+            <i class="material-icons">album</i>
+            <h3>Albums</h3>
+          </div>
+        </div>-->
+    </div>
 
+<!--  <div class="parallax-container">
+      <div id="parallax"><img src="../Assets/gr.jpg"></div>
+    </div> -->
 
 <!--RELATED ARTISTS PAGE-->
-  <div class="title clearfix"> 
+          <div class="title container clearfix"> 
           <i class="material-icons">library_music</i> 
             <h3>Related Artists</h3>
-  </div>
-  <section id="relatedArtists" class="clearfix">  
+      </div>
+  <section id="relatedArtists" class="full-background clearfix">  
+    <!-- <div class="no-text section-header">
+      <div class="title">
+        <i class="material-icons">headset</i>
+        <h3>Related Artists</h3>
+      </div>
+    </div>   -->
+    <!-- <figure class="effect-apollo">
+        <img src="../Assets/1.jpg" alt="album">
+        <figcaption>
+          <h2>Artist <span>Name</span></h2>
+          <p>Popularity</p>
+        </figcaption>     
+      </figure>
+    </div> -->
   </section>
 
     <!--FOOTER CONTAINER-->
