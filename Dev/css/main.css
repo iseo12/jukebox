@@ -14,6 +14,9 @@
    Author's custom styles
    ========================================================================== */
 
+/*------
+---NAV--
+------*/
 .cd-header {
   position: fixed;
   top: 0;
@@ -153,12 +156,9 @@
   }
 }
 
-
-
-
-
-
-/*-----------NAV----------*/
+/*------
+---PAGE ELEMENTS--
+------*/
 .full-background {
   height: 100vh;
   width: 100%;
@@ -168,11 +168,53 @@
   z-index: 1;
 }
 
-/*.bar{
-  height: 3px;
-  width: 25%;
-  background-color: #CDDC39;
-}*/
+.withborder{
+  padding:10px 10px 0 10px; 
+  border: 10px solid #fff;
+}
+body{
+  color: #fff;
+}
+
+main h3{
+  font-size: 2.5em;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.bottom{
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.material-icons{
+  font-size: 24px;
+}
+
+
+/*------
+---HEADER--
+------*/
+header h2{
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size:8em;
+  text-align:center;
+}
+
+header h4{
+  font-weight: 200;
+  font-size:2em;
+}
 
 video#bgvid {
   position: absolute;
@@ -189,33 +231,9 @@ video#bgvid {
   background-size: cover;
 }
 
-.withborder{
-  padding:10px 10px 0 10px; 
-  border: 10px solid #fff;
-}
-body{
-  color: #fff;
-}
-
-header h2{
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size:8em;
-}
-
-header h4{
-  font-weight: 200;
-  font-size:2em;
-}
-
-main h3{
-  font-size: 2.5em;
-  text-transform: uppercase;
-  font-weight: 200;
-}
-
-
-/*SEARCH */
+/*------
+---SEARCH--
+------*/
 
 /* label color */
    .input-field label {
@@ -251,112 +269,42 @@ main h3{
      color: #CDDC39;
    }
 
-.hidden {
-  display: none;
-}
+/*------
+---TITLE--
+------*/
 
-.intro-text{
-  width:100%;
-}
-
-#intro h1{
-  font-size: 13vh;
-}
-
-.bottom{
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.material-icons{
-  font-size: 24px;
-}
-
-.ui-menu-item {
-  font-size: 16px;
-  padding-top: 15px;
-}
-
-.ui-helper-hidden-accessible {
-  display: none;
-}
-
-/*TITLE ACROSS ALL PAGES*/
 .title{
-/*  margin: 50px;*/
   width: 100%;
   background-color: #1a237e;
-  margin:5px auto;
+  margin:0 auto;
   padding-bottom: 10px;
   margin-bottom: 15px;
-/*  height: 10em;*/
-  /*border: 3px solid;*/
 }
 
 .title i, h3{
-/*  margin-right: 15px;*/
   text-align: center;
   width: 100%;
   color:#fff;
 }
 
 .title i{
-  margin: 50px auto 0;
+  margin: 25px auto 0;
   font-size: 36px;
 }
 
 .title h3{
-  font-size: 3em;
+  font-size: 2em;
   font-weight:800;
-  margin: 0 auto 50px;
+  margin: 0 auto 25px;
 }
 
-/*#artistContent i, #artistContent h3 {
-  color:#fff;
-}*/
+/*------
+---BIO--
+------*/
 
-#top10tracks {
-  margin:8px auto 0;
-}
-
-/*#top10tracks .title i h3{
-  margin-top: 0px;
-}
-
-#top10tracks h3 {
-  padding-top: 0px;
-}*/
-
-/*#artistContent .withborder{
-  padding:0;
-  border:0;
-}*/
-
-/*SEARCH PAGE*/
-
-
-/*ARTIST BIO PAGE*/
 #artist{
   background-color:#fff;
   color:#000;
-/*  height:100vh;*/
-}
-
-/*.biotitle{
-  border:0;
-  width:100%;
-  margin: 0 auto;
-  height: 20vh;
-  text-align: center;
-  background-color: #1a237e;
-  color:#fff;
-}*/
-
-.bio-header{
-  width: 100%;
-  margin: 5em auto 1.5em;
 }
 
 .bio-text{
@@ -382,148 +330,6 @@ main h3{
   position: relative;
   text-align:center;
   margin:3em;
-}
-
-
-/*#viewMoreBio{
-  text-align: center;
-  margin:3em;
-}*/
-/*
-#artist img{
-  max-height:55vh;
-}*/
-
-/*#artist h2{
-  margin: 5vh auto;
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size:3em;
-  color: #1a237e;
-}*/
-
-#albums {
-  overflow-y: hidden;
-}*/
-
-/*.bio-text{
-  display: block;
-  width: 100%;
-  margin: auto;
-  text-align: center;
-}
-
-/*TRACK PAGES*/
-#top10tracks .title{
-  border:0;
-  width:100%;
-  margin: 10px auto;
-  background-color: #1a237e;
-  text-align:center;
-  color:#000;
-}
-
-/*#top10tracks h3{
-  padding-top: 20px;
-  text-align:center;
-}*/
-
-#top10tracks .tabletrack{
-  width:70%;
-  margin: 3em auto 3em;
-}
-
-#topTracks img{
-  height:50px;
-  width:50px;
-}
-
-#top10tracks {
-  overflow-y: hidden;
-  position: relative;
-}
-
-.viewLessTracks {
-  display: none;
-  height: 70px;
-  padding: 10px 0px;
-  position: relative;
-  text-align:center;
-}
-
-#artistContent .full-background{
-  background-color: #fff;
-}
-
-.viewMoreTracks {
-  text-align: center;
-  display: none;
-  position: absolute;
-  background-color: #000000;
-  bottom: 0%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 100%;
-  height: 55px;
-  z-index: 10;
-}
-
-.viewMoreAlbums {
-  text-align: center;
-  position: absolute;
-  bottom: 8%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 100%;
-  z-index: 10;
-}
-
-#topTracksMore, #topTracksLess, #albumsMore, #bioButton {
-  font-size: 16px;
-  padding: 10px 20px;
-  background-color: #cddc39;
-  color: #ffffff;
-}
-
-#topTracksMore:hover, #topTracksLess:hover, #albumsMore:hover, #bioButton:hover {
-  border: 2px solid #cddc39;
-  background-color: #ffffff;
-  color: #cddc39;
-}
-
-.bio-header {
-  position: relative;
-  overflow: hidden;
-  /*margin: 10px 1%;*/
-/*  min-width: 320px;*/
-  max-width: 480px;
-  width: 100%;
-  height: 322px; /*50%;*/
-}
-
-.module img {
-  position: relative;
-  display: block;
-  min-height: 100%;
-  max-width: 100%;
-  opacity: 0.5;
-  width: 300px;
-}
-
-.bio-header p {
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 4rem;
-  transform: translate(-50%, -50%);
-  margin:0;
-  text-transform:uppercase;
-  font-weight:800;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 
@@ -588,12 +394,6 @@ figure.effect-bio:hover h2 {
   transform: translate3d(0,0,0);
 }
 
-/*figure.effect-bio:hover figcaption::before {
-  opacity: 0.7;
-  -webkit-transform: rotate3d(0,0,1,20deg);
-  transform: rotate3d(0,0,1,20deg);
-}*/
-
 figure.effect-bio:hover p i {
   opacity: 1;
   font-color: #1a237e;
@@ -611,26 +411,132 @@ figure.effect-bio {
 }
 
 /*-----------------*/
+/***** TOP TRACKS *****/
+/*-----------------*/
 
-/*ALBUM AND RELATED ARTIST PAGES*/
-.withborder .full-background { 
-    max-height: 644px;
+#top10tracks {
+  margin:0 auto;
 }
 
-#relatedArtists {
-  margin-top: 20px;
-  margin-bottom: 10px;
+
+#top10tracks .title{
+  border:0;
+  width:100%;
+  margin: 0 auto;
+  background-color: #1a237e;
+  text-align:center;
+  color:#000;
 }
+
+#top10tracks .tabletrack{
+  width:70%;
+  margin: 3em auto 3em;
+}
+
+#topTracks img{
+  height:50px;
+  width:50px;
+}
+
+#top10tracks {
+  overflow-y: hidden;
+  position: relative;
+}
+
+.viewLessTracks {
+  display: none;
+  height: 70px;
+  padding: 10px 0px;
+  position: relative;
+  text-align:center;
+}
+
+
+.viewMoreTracks {
+  text-align: center;
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  bottom: 0%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 100%;
+  height: 55px;
+  z-index: 10;
+}
+
+/*-----------------*/
+/***** ALBUM *****/
+/*-----------------*/
+#artistContent .full-background{
+  background-color: #fff;
+}
+
+
+.viewMoreAlbums {
+  text-align: center;
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 10;
+}
+
+#topTracksMore, #topTracksLess, #albumsMore, #bioButton {
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #cddc39;
+  color: #ffffff;
+}
+
+#topTracksMore:hover, #topTracksLess:hover, #albumsMore:hover, #bioButton:hover {
+  border: 2px solid #cddc39;
+  background-color: #ffffff;
+  color: #cddc39;
+}
+
+
+#albums {
+  overflow-y: hidden;
+}
+
+#artistContent .title{
+  margin-top:15px;
+}
+
+#albums{
+  max-height:644px;
+}
+
+
+#albums figure.effect-apollo {
+  background: #3F53B1;
+  margin: 0;
+}
+
+/*-----------------*/
+/***** RELATED *****/
+/*-----------------*/
+
+#relatedArtists figure.effect-apollo{
+background:#8BC34A;
+margin:0;
+}
+
+/*-------
+ALBUM + RELATED
+---------*/
 
 figure {
   position: relative;
   float: left;
   overflow: hidden;
-  /*margin: 10px 1%;*/
-/*  min-width: 320px;*/
   max-width: 480px;
   width: 33.3%;
-  height: 322px; /*50%;*/
+  height: 322px; 
   background: #3085a3;
   text-align: center;
   cursor: pointer;
@@ -668,8 +574,6 @@ figure figcaption > a {
   height: 100%;
 }
 
-/* Anchor will cover the whole item by default */
-/* For some effects it will show as a button */
 figure figcaption > a {
   z-index: 1000;
   text-indent: 200%;
@@ -698,15 +602,6 @@ figure p {
   font-size: 68.5%;
 }
 
-#albums figure.effect-apollo {
-  background: #3F53B1;
-  margin: 0;
-}
-
-#relatedArtists figure.effect-apollo{
-background:#8BC34A;
-margin:0;
-}
 figure.effect-apollo img {
   opacity: 0.85;
   width: 100%;
@@ -782,30 +677,35 @@ figure.effect-apollo:hover h2 {
 }
  
   figure {
-   /* position: relative;
-    float: left;
-    overflow: hidden;
-    margin: 10px 1%;
-    min-width: 320px;
-    max-width: 480px;*/
     width: 50%;
-   /* height: 50%;
-    background: #3085a3;
-    text-align: center;
-    cursor: pointer;*/
-  }
 }
 
-
-/*TABLET - LANDSCAPE BREAKPOINT
-@media only screen and (min-width: 769px) and (max-width: 1024) {
-  
 }
 /*TABLET - PORTRAIT BREAKPOINT*/
-@media only screen and(max-width: 768px) {
-  header h2{
-    font-size: 5em;
-  }
+@media only screen and (min-width: 680px) and (max-width: 768px) {
+
+.intro-text h2{
+  font-size: 15px;
+}
+
+.title{
+  width: 100%;
+  background-color: #1a237e;
+  margin: 0 auto;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.title i{
+  margin: 25px auto 0;
+  font-size: 25px;
+}
+
+.title h3{
+  font-size: 1.5em;
+  font-weight:800;
+  margin: 0 auto 30px;
+}
 
   #albums{ 
     overflow-y:visible;
@@ -831,43 +731,40 @@ figure.effect-apollo:hover h2 {
 
 
 /*MOBILE*/
-@media only screen and (max-width: 679px) {
-#intro h2{
-    font-size: 5em;
-  }
+@media only screen and (min-width: 320px) and (max-width: 679px) {
+
+.intro-text h2{
+  font-size:15px;
+}
+
+.title{
+  width: 100%;
+  background-color: #1a237e;
+  margin:0px auto;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.title i{
+  margin: 25px auto 0;
+  font-size: 25px;
+}
+
+.title h3{
+  font-size: 1.5em;
+  font-weight:800;
+  margin: 0 auto 30px;
+}
+
+.topTracks tr td{
+  font-size:12px;
+}
+
+.viewMoreTracks{
+  bottom:-2%;
+}
 
 /*BIO*/
-.bio-header{
-  width:100%;
-  text-align: center;
-  display: block;
-  margin-top: 5em auto 0;
-}
-
-.bio-text{
-  display:block;
-  position:relative;
-  margin: 12vh auto;
-  text-align: center;
-  height: 50vh;
-  width: 80%;
-  overflow-y: scroll;
-  text-align: center;
-}
-
-.bio-header img{
-  position: relative;
-  min-height: 100%;
-  opacity: 0.7;
-  min-width: 0;
-  width:50%;
-}
-
-.bio-text p{
-  font-weight: 200;
-  font-size:1em;
-}
-
 #viewMoreBio{
   text-align: center;
   margin-bottom:3em;
@@ -878,10 +775,6 @@ figure.effect-apollo:hover h2 {
 }
 
 #artist h2{
-/*  margin: 1.5vh auto .1vh;*/
-/*  text-transform: uppercase;
-  font-weight: 800;
-  font-size:3em;*/
   color: #fff;
 }
 
@@ -895,29 +788,11 @@ figure img {
   width:50%;
 }
 
-figure h2 {
-  font-size: 1em;
-}
-/*
-figure .effect-apollo{
-  display:inline-block;
-  width:49%;
-  height: 25%;
-}*/
-
 .effect-apollo{
-min-width: 0;
+  min-width: 0;
  height: 50%;
  width: 50%;
 }
-
-
-/*figure h2 {
-  font-size:.75em;
-  word-spacing: -0.15em;
-  font-weight: 200;
-}
-*/
 
   #albums{
     background-color: #fff;  
@@ -926,95 +801,12 @@ min-width: 0;
     margin:0 auto;
 }
 
-  #relatedArtists{
+/*  #relatedArtists{
     background-color: #fff;  
-  }
-
-
-/*MOBILE*/
-@media only screen and (max-width: 320px) {
-
- #intro h2{
-  font-size: 5em;
- } 
-
-.bio-header{
-  width:100%;
-  text-align: center;
-  display: block;
-}
-
-.bio-text{
-  display:block;
-  position:relative;
-  margin: 12vh auto;
-  text-align: center;
-  height: 50vh;
-  width: 80%;
-  overflow-y: visible;
-  text-align: center;
-}
-
-.bio-text p{
-  font-weight: 200;
-  font-size:1em;
-}
-
-#viewMoreBio{
-  text-align: center;
-  margin-bottom:3em;
-}
-
-#artist img{
-  margin: 12vh auto 1.5vh;
-  max-height:55vh;
-}
-
-/*#artist h2{
-  margin: 1.5vh auto .1vh;
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size:3em;
-  color: #1a237e;
-}*/
-
-
-.withoutborder .full-background{
-  padding:0;
-  border:0;
-
-}
-
-figure img {
-  position: relative;
-  display: inline-block;
-  min-height: 100%;
-  opacity: 0.7;
-  width:50%;
-}
-
-figure figcaption {
-  font-size: .75em;
-}
+  }*/
 
 figure h2 {
-  font-size:.75em;
-  word-spacing: -0.15em;
-  font-weight: 200;
-}
-
- #albums .full-background{
-   background-color: #fff;  
-   overflow-y: visible;
-}
-
-  #relatedArtists .full-background{
-    background-color: #fff;  
-  }
-
-  figure {
-    width: 100%;
-  }
+  font-size:1.5em;
 }
 
 /*VIDEO BREAKPOINT*/
