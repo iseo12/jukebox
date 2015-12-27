@@ -327,26 +327,9 @@ main h3{
   margin: 0 auto 50px;
 }
 
-/*#artistContent i, #artistContent h3 {
-  color:#fff;
-}*/
-
 #top10tracks {
   margin:8px auto 0;
 }
-
-/*#top10tracks .title i h3{
-  margin-top: 0px;
-}
-
-#top10tracks h3 {
-  padding-top: 0px;
-}*/
-
-/*#artistContent .withborder{
-  padding:0;
-  border:0;
-}*/
 
 /*SEARCH PAGE*/
 
@@ -355,18 +338,7 @@ main h3{
 #artist{
   background-color:#fff;
   color:#000;
-/*  height:100vh;*/
 }
-
-/*.biotitle{
-  border:0;
-  width:100%;
-  margin: 0 auto;
-  height: 20vh;
-  text-align: center;
-  background-color: #1a237e;
-  color:#fff;
-}*/
 
 .bio-header{
   width: 100%;
@@ -412,32 +384,10 @@ main h3{
   height: 322px;
 }
 
-/*#viewMoreBio{
-  text-align: center;
-  margin:3em;
-}*/
-/*
-#artist img{
-  max-height:55vh;
-}*/
-
-/*#artist h2{
-  margin: 5vh auto;
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size:3em;
-  color: #1a237e;
-}*/
-
 #albums {
   overflow-y: hidden;
-}*/
-
-/*.bio-text{
-  display: block;
-  width: 100%;
-  margin: auto;
-  text-align: center;
+  width: 77%;
+  margin: 0 auto;
 }
 
 /*TRACK PAGES*/
@@ -449,11 +399,6 @@ main h3{
   text-align:center;
   color:#000;
 }
-
-/*#top10tracks h3{
-  padding-top: 20px;
-  text-align:center;
-}*/
 
 #top10tracks .tabletrack{
   width:70%;
@@ -645,8 +590,8 @@ figure.effect-bio {
 }
 
 #relatedArtists {
-  margin-top: 20px;
-  margin-bottom: 10px;
+   width: 77%;
+   margin: 20px auto 10px auto;
 }
 
 figure {
@@ -667,7 +612,7 @@ figure img {
   position: relative;
   display: block;
   min-height: 100%;
-  max-width: 100%;
+  min-width: 100%;
   opacity: 0.7;
 }
 
